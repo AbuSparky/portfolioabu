@@ -17,7 +17,7 @@ import TypewriterText from "../Components/TypewriterText";
 
 
 const Skills = () => {
-  const text = "S K I L L S ".split(" ");
+  const text = "P R O G R A M M I N G - S K I L L S ".split(" ");
   return (
     <Flex
       width={"100%"}
@@ -36,7 +36,7 @@ const Skills = () => {
           whileInView={{
             width: "100%", // Slide in to its original position
             transition: {
-              duration: 1, // Animation duration
+              duration: 1.5, // Animation duration
               delay: 0.5,
             },
           }}

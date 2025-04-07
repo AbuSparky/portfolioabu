@@ -164,7 +164,7 @@ const Home = () => {
                 borderColor={"brand.buttonGreen"}
                 onClick={() => {
                   window.location.href =
-                    "www.linkedin.com/in/nihamathullah369";
+                    "https://www.linkedin.com/in/nihamathullah369/";
                 }}
                 cursor={"pointer"}
               >

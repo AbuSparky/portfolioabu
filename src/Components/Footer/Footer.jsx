@@ -68,7 +68,7 @@ const footerIcon = [
   { iconName: CgMail, link: "mailto:nihamath369@gmail.com" },
   {
     iconName: FaLinkedinIn,
-    link: "www.linkedin.com/in/nihamathullah369",
+    link: "https://www.linkedin.com/in/nihamathullah369/",
   },
   { iconName: BsGithub, link: "https://github.com/AbuSparky" },
 ];
