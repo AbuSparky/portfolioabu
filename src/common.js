@@ -5,6 +5,7 @@ import img4 from "../src/assets/projects/project4.png";
 import img5 from "../src/assets/projects/project5.png";
 import img6 from "../src/assets/projects/project6.png";
 import img7 from "../src/assets/projects/project7.png";
+import img8 from "../src/assets/projects/project8.png";
 
 export const PROJECTS = [
     {
@@ -55,5 +56,12 @@ export const PROJECTS = [
         image: img7,
         stack: ["HTML", "CSS", "Javascript"],
         nlink: "reviews001abu.netlify.app"
+    },
+    {
+        title: "Student Certificate Management System",
+        description: "Student Certificate Management System is a web-based application designed to streamline the process of creating, managing, and issuing academic certificates for students. It allows administrators to generate certificates digitally, store them securely, and provide students with easy access and verification options.",
+        image: img8,
+        stack: ["HTML" , "CSS" , "JavaScript" , "FireBase"],
+        nlink: "student-certificate-management-system.netlify.app"
     }
 ]
