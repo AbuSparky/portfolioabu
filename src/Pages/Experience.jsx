@@ -250,12 +250,11 @@ export default Experience;
 
 const experienceData = [
   {
-    company: "JIffyDo",
-    role: "Software Developer",
+    company: "STZ Technology pvt.ltd",
+    role: "Associate Software Trainee",
     icon: dev,
-    period: "Jun 2024 - Present",
+    period: "Apr 2024 - Apr 2025",
     description: [
-      "Facilitates seamless communication and exchange of information, such as grades, schedules, and attendance records between teachers, students, and parents.",
       "Worked in React.js, Java and Mysql in version 1.0",
       "Currently working in React in version 2.0",
       "Experienced in developing applications from scratch, covering design, development, testing, and documentation.",
