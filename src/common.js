@@ -34,7 +34,7 @@ export const PROJECTS = [
         description: "This website was created for the JSKA Maldives Karate Association to share information with members, students, and visitors. It includes details about the management team, instructors, and the overall structure of the association. There's also a photo gallery showing events, training sessions, and tournaments. The site is easy to use, mobile-friendly, and designed to reflect the spirit and discipline of karate.",
         image: img4,
         stack: ["HTML", "CSS", "Javascript","Firebase"],
-        nlink: "https://jskamaldives.netlify.app"
+        nlink: "https://jskamaldives.netlify.app/jskahome.html"
     },
     {
         title: "Match Game",
