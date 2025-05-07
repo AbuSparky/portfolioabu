@@ -251,7 +251,7 @@ export default Experience;
 const experienceData = [
   {
     company: "STZ Technology pvt.ltd",
-    role: "Associate Software Trainee",
+    role: "Associate Software Trainee - Internship",
     icon: dev,
     period: "Apr 2024 - Apr 2025",
     description: [
@@ -263,7 +263,7 @@ const experienceData = [
   },
   {
     company: "Jilaba Software Service Pvt.Ltd",
-    role: "Technical Support Executive  Internship",
+    role: "Technical Support Executive - Internship",
     icon: dev,
     period: "Nov 2023 - Apr 2024",
     description: [
@@ -274,7 +274,7 @@ const experienceData = [
 
   {
     company :"Internshala",
-    role:"Internship",
+    role:"Trainee - Internship",
     icon:dev,
     period:"Mar 2023 - May 2023",
     description:[
