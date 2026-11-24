@@ -1,91 +1,83 @@
-import { extendTheme, theme as base } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 
-// Update the breakpoints as key-value pairs
 const breakpoints = {
   sm: "320px",
   md: "768px",
   lg: "960px",
-  xl: "1050px",
+  xl: "1200px",
   "2xl": "1600px",
 };
 
 const config = {
-  initialColorMode: "dark",
+  initialColorMode: "light",
   useSystemColorMode: false,
 };
 
 const theme = extendTheme({
   config,
   breakpoints,
+  colors: {
+    brand: {
+      mainBg: "#F8FAFF",
+      white: "#0F172A", // primary text
+      textPrimary: "#0F172A",
+      textSecondary: "#475569",
+      textMuted: "#64748B",
+      surface: "#FFFFFF",
+      glassBg: "rgba(255, 255, 255, 0.75)",
+      glassBorder: "rgba(226, 232, 240, 0.85)",
+      cardBg: "rgba(255, 255, 255, 0.85)",
+      cardBorder: "rgba(99, 102, 241, 0.16)",
+      headerBg: "rgba(255, 255, 255, 0.8)",
+      headerBorder: "rgba(226, 232, 240, 0.85)",
+      sectionBg: "rgba(241, 245, 255, 0.45)",
+      violet: "#7C3AED",
+      indigo: "#6366F1",
+      cyan: "#06B6D4",
+      buttonGreen: "#6366F1",
+      gradient: "linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #22D3EE 100%)",
+      tagBg: "rgba(99, 102, 241, 0.08)",
+      codeBg: "rgba(255, 255, 255, 0.95)",
+    },
+  },
   semanticTokens: {
     colors: {
-      "brand.mainBg": {
-        default: "#F8FAFC",
-        _dark: "#111111",
-      },
-      "brand.white": {
-        default: "#0F172A",
-        _dark: "#FFFFFF",
-      },
-      "brand.dark": {
-        default: "#FFFFFF",
-        _dark: "#000000",
-      },
-      "brand.buttonGreen": {
-        default: "#0D9488",
-        _dark: "#33FFCC",
-      },
-      "brand.cardBg": {
-        default: "#FFFFFF",
-        _dark: "#1A1A1A",
-      },
-      "brand.cardBorder": {
-        default: "rgba(0, 0, 0, 0.1)",
-        _dark: "rgba(63, 63, 63, 0.5)",
-      },
-      "brand.headerBg": {
-        default: "rgba(255, 255, 255, 0.8)",
-        _dark: "rgba(22, 22, 22, 0.4)",
-      },
-      "brand.headerBorder": {
-        default: "rgba(0, 0, 0, 0.1)",
-        _dark: "rgba(63, 63, 63, 0.5)",
-      },
-      "brand.sectionBg": {
-        default: "rgba(241, 245, 249, 0.85)",
-        _dark: "rgba(22, 22, 22, 0.3)",
-      },
-      "brand.textSecondary": {
-        default: "#475569",
-        _dark: "rgba(255, 255, 255, 0.7)",
-      },
-      "brand.textMuted": {
-        default: "#64748B",
-        _dark: "#A0AEC0",
-      },
-      "brand.codeBg": {
-        default: "#F1F5F9",
-        _dark: "#1D2023",
-      },
-      "brand.tagBg": {
-        default: "rgba(13, 148, 136, 0.12)",
-        _dark: "rgba(51, 255, 204, 0.1)",
-      },
+      "brand.mainBg": { default: "#F8FAFF" },
+      "brand.white": { default: "#0F172A" },
+      "brand.textPrimary": { default: "#0F172A" },
+      "brand.textSecondary": { default: "#475569" },
+      "brand.textMuted": { default: "#64748B" },
+      "brand.surface": { default: "#FFFFFF" },
+      "brand.glassBg": { default: "rgba(255, 255, 255, 0.75)" },
+      "brand.glassBorder": { default: "rgba(226, 232, 240, 0.85)" },
+      "brand.cardBg": { default: "rgba(255, 255, 255, 0.85)" },
+      "brand.cardBorder": { default: "rgba(99, 102, 241, 0.16)" },
+      "brand.headerBg": { default: "rgba(255, 255, 255, 0.8)" },
+      "brand.headerBorder": { default: "rgba(226, 232, 240, 0.85)" },
+      "brand.sectionBg": { default: "rgba(241, 245, 255, 0.45)" },
+      "brand.buttonGreen": { default: "#6366F1" },
+      "brand.tagBg": { default: "rgba(99, 102, 241, 0.08)" },
+      "brand.codeBg": { default: "rgba(255, 255, 255, 0.95)" },
     },
   },
   styles: {
-    global: (props) => ({
-      body: {
-        bg: props.colorMode === "dark" ? "#111111" : "#F8FAFC",
-        color: props.colorMode === "dark" ? "#FFFFFF" : "#0F172A",
-        transitionProperty: "background-color, color, border-color",
-        transitionDuration: "0.25s",
+    global: {
+      "html, body": {
+        bg: "#F8FAFF",
+        color: "#0F172A",
+        fontFamily: "'Inter', sans-serif",
+        overflowX: "hidden",
+        scrollBehavior: "smooth",
       },
-    }),
+      "::selection": {
+        bg: "rgba(99, 102, 241, 0.2)",
+        color: "#4338CA",
+      },
+    },
   },
   fonts: {
-    heading: `Poppins, sans-serif,${base.fonts?.heading}`,
-    body: `Poppins, sans-serif,${base.fonts?.body}`,
+    heading: `'Space Grotesk', -apple-system, sans-serif`,
+    body: `'Inter', -apple-system, sans-serif`,
   },
 });
 

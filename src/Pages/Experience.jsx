@@ -1,247 +1,221 @@
-import { Flex, Text, Image, Divider, Icon } from "@chakra-ui/react";
+import { Badge, Box, Flex, Icon, Image, Text } from "@chakra-ui/react";
 import dev from "../assets/Skills/dev.svg";
-import teach from "../assets/Skills/teach.svg";
 import TypewriterText from "../Components/TypewriterText";
-import { complex, motion } from "framer-motion";
-import { CiStar } from "react-icons/ci";
+import { motion } from "framer-motion";
+import { HiSparkles } from "react-icons/hi2";
+import Tilt from "react-parallax-tilt";
+
 const Experience = () => {
-  const text = "E x p e r i e n c e ".split(" ");
+  const text = "E X P E R I E N C E ".split(" ");
+
   return (
     <Flex
-      width={"100%"}
-      flexDir={"column"}
-      justifyContent={"center"}
       id="experience"
-      alignItems={"center"}
-      // minH={{ md: "100vh", base: "auto" }}
-      gap={10}
-      py={20}
-      bg={"brand.sectionBg"}
-      backdropFilter={"blur(2px)"}
+      w="100%"
+      maxW="1200px"
+      mx="auto"
+      flexDir="column"
+      alignItems="center"
+      py={{ base: 14, md: 24 }}
+      px={{ base: 4, md: 8 }}
+      position="relative"
     >
-      <Flex flexDir={"column"}>
+      {/* Title */}
+      <Flex flexDir="column" alignItems="center" mb={{ base: 10, md: 16 }}>
         <TypewriterText text={text} />
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{
-            width: "100%", // Slide in to its original position
-            transition: {
-              duration: 1, // Animation duration
-              delay: 0.8,
-            },
-          }}
-          viewport={{ once: true }}
+        <Box
+          w="60px"
+          h="3px"
+          borderRadius="full"
+          background="linear-gradient(90deg, #7C3AED, #22D3EE)"
+          mt={2}
+        />
+        <Text
+          fontSize={{ base: "14px", md: "16px" }}
+          color="#64748B"
+          mt={3}
+          textAlign="center"
         >
-          <Divider borderColor="brand.buttonGreen" borderWidth={2} />
-        </motion.div>
+          My professional journey and industry experience
+        </Text>
       </Flex>
-      {/* Experience Section */}
-      <Flex flexDir={"column"} alignItems={"center"} w={"100%"}>
-        {/* First Experience */}
+
+      {/* Vertical Timeline Container */}
+      <Flex flexDir="column" w="100%" position="relative">
+        {/* Timeline Center/Left Line */}
+        <Box
+          position="absolute"
+          top="20px"
+          bottom="40px"
+          left={{ base: "20px", md: "50%" }}
+          transform={{ base: "none", md: "translateX(-50%)" }}
+          w="2px"
+          background="linear-gradient(180deg, #7C3AED 0%, #6366F1 50%, #22D3EE 100%)"
+          opacity={0.4}
+        />
+
         {experienceData.map((data, i) => {
+          const isEven = i % 2 === 0;
           return (
             <Flex
-              gap={{ md: 2, base: 1 }}
               key={i}
-              w={{ md: "100%", base: "90%" }}
-              justifyContent={"center"}
-              m={"auto"}
+              w="100%"
+              mb={{ base: 10, md: 14 }}
+              position="relative"
+              flexDir={{ base: "column", md: isEven ? "row" : "row-reverse" }}
+              alignItems={{ base: "flex-start", md: "center" }}
+              pl={{ base: "50px", md: 0 }}
             >
-              {/* First Section Starts */}
-              <motion.div
-                initial={{ opacity: 0, y: 5 }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0, // Slide in to its original position
-                  transition: {
-                    duration: 0.5, // Animation duration
-                    delay: 0.5,
-                  },
+              {/* Timeline Center Glowing Node */}
+              <Box
+                position="absolute"
+                left={{ base: "10px", md: "50%" }}
+                top={{ base: "2px", md: "50%" }}
+                transform={{
+                  base: "none",
+                  md: "translate(-50%, -50%)",
                 }}
-                viewport={{ once: true }}
+                zIndex={3}
               >
                 <Flex
-                  bg={"brand.buttonGreen"}
-                  h={{ md: 8, base: 7 }}
-                  alignItems={"center"}
-                  width={{ lg: 180, md: 130, base: "100px" }}
-                  borderRadius={20}
-                  mt={2}
-                  justifyContent={"center"}
-                  display={{ base: "none", md: "flex" }}
+                  w="22px"
+                  h="22px"
+                  borderRadius="full"
+                  bg="white"
+                  border="3px solid #6366F1"
+                  alignItems="center"
+                  justifyContent="center"
+                  boxShadow="0 0 16px rgba(99, 102, 241, 0.6)"
                 >
-                  <Text
-                    fontSize={{ lg: "14px", md: "12px", base: "10px" }}
-                    fontWeight={600}
-                    color={"black"}
-                  >
-                    {data.period}
-                  </Text>
+                  <Box w="6px" h="6px" borderRadius="full" bg="#7C3AED" />
                 </Flex>
-              </motion.div>
-              {/* First Section Ends */}
-              {/* Second Section Starts */}
-              <Flex flexDir={"column"} alignItems={"center"}>
-                {/* Icon */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{
-                    opacity: 1,
-                    transition: {
-                      duration: 0.5, // Animation duration
-                      delay: 0.5,
-                    },
-                  }}
-                  viewport={{ once: true }}
-                >
-                  <Flex
-                    width={{ md: "50px", base: "40px" }}
-                    height={{ md: "50px", base: "40px" }}
-                    border={"2px solid "}
-                    alignItems={"center"}
-                    justifyContent={"center"}
-                    borderColor={"brand.buttonGreen"}
-                    bg={"brand.cardBg"}
-                    borderRadius={50}
-                    p={1.5}
-                    boxShadow="0 0 10px rgba(51, 255, 204, 0.4)"
-                  >
-                    <Image src={data.icon} alt="dev" mt={3} />
-                  </Flex>
-                </motion.div>
-                {/* Line */}
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  whileInView={{
-                    opacity: 1,
-                    height: "100%", // Slide in to its original position
-                    marginBottom: 5,
-                    transition: {
-                      duration: 0.5, // Animation duration
-                      delay: 0.5,
-                    },
-                  }}
-                  viewport={{ once: true }}
-                >
-                  <Divider
-                    orientation="vertical"
-                    // h={"100%"}
-                    borderWidth={2}
-                    w={0}
-                    my={1}
-                    borderColor={"brand.buttonGreen"}
-                  />
-                </motion.div>
-              </Flex>
-              {/* Second Section Starts */}
+              </Box>
 
-              {/* Second Experience */}
-              {/* Third Section Starts */}
-              <Flex
-                color={"brand.white"}
-                flexDir={"column"}
-                ml={{ md: 4, base: 2 }}
-                w={{ xl: "35%", lg: "45%", md: "50%", base: "100%" }}
-                mb={5}
-              >
+              {/* 3D Tilt Experience Card Container */}
+              <Box w={{ base: "100%", md: "46%" }}>
                 <motion.div
-                  initial={{ opacity: 0, y: 5 }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0, // Slide in to its original position
-                    transition: {
-                      duration: 0.5, // Animation duration
-                      delay: 0.5,
-                    },
-                  }}
-                  viewport={{ once: true }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true, margin: "-50px" }}
                 >
-                  <Flex
-                    bg={"brand.buttonGreen"}
-                    h={{ md: 8, base: 7 }}
-                    alignItems={"center"}
-                    width={{ lg: 180, md: 130, base: 120 }}
-                    borderRadius={20}
-                    mt={1}
-                    mb={2}
-                    justifyContent={"center"}
-                    display={{ base: "flex", md: "none" }}
+                  <Tilt
+                    perspective={1000}
+                    glareEnable={true}
+                    glareMaxOpacity={0.08}
+                    glareColor="#6366F1"
+                    glareBorderRadius="24px"
+                    scale={1.02}
+                    transitionSpeed={1200}
                   >
-                    <Text
-                      fontSize={{ lg: "14px", md: "12px", base: "10px" }}
-                      fontWeight={600}
-                      color={"black"}
+                    <Flex
+                      flexDir="column"
+                      p={{ base: 5, md: 7 }}
+                      borderRadius="24px"
+                      bg="rgba(255, 255, 255, 0.85)"
+                      backdropFilter="blur(16px)"
+                      border="1px solid rgba(226, 232, 240, 0.9)"
+                      boxShadow="0 14px 34px -10px rgba(99, 102, 241, 0.1), 0 4px 6px rgba(0, 0, 0, 0.02)"
+                      transition="all 0.3s ease"
+                      _hover={{
+                        borderColor: "rgba(99, 102, 241, 0.35)",
+                        boxShadow:
+                          "0 20px 40px -12px rgba(99, 102, 241, 0.18), 0 0 20px rgba(34, 211, 238, 0.12)",
+                      }}
                     >
-                      {data.period}
-                    </Text>
-                  </Flex>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 5 }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0, // Slide in to its original position
-                    transition: {
-                      duration: 0.5, // Animation duration
-                      delay: 0.5,
-                    },
-                  }}
-                  viewport={{ once: true }}
-                >
-                  <Text
-                    fontSize={{ md: "3xl", base: "18px" }}
-                    fontWeight={"bold"}
-                  >
-                    {data.role}
-                  </Text>
-                  <Text fontSize={{ md: "xl", base: "15px" }} fontWeight={600}>
-                    {data.company}
-                  </Text>
-                </motion.div>
-                <Flex
-                  flexDir={"column"}
-                  width={"100%"}
-                  pl={{ lg: 4, md: 2, base: 1 }}
-                >
-                  {data.description.map((desc, i) => {
-                    return (
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{
-                          opacity: 1,
-                          y: 0, // Slide in to its original position
-                          transition: {
-                            duration: 0.7, // Animation duration
-                            delay: 0.5,
-                          },
-                        }}
-                        viewport={{ once: true }}
-                        key={i}
+                      {/* Top Header Row */}
+                      <Flex
+                        justifyContent="space-between"
+                        alignItems="flex-start"
+                        gap={3}
+                        mb={3}
+                        wrap="wrap"
                       >
-                        <Flex
-                          alignItems={"center"}
-                          gap={2}
-                          w={{ lg: "100%", md: "100%", base: "95%" }}
-                        >
-                          <Icon as={CiStar} color={"brand.buttonGreen"} />
-                          <Text
-                            fontSize={{ md: "14px", base: "12px" }}
-                            mt={2}
-                            color={"brand.textSecondary"}
+                        <Flex align="center" gap={3}>
+                          <Flex
+                            w="40px"
+                            h="40px"
+                            borderRadius="12px"
+                            bg="rgba(99, 102, 241, 0.08)"
+                            border="1px solid rgba(99, 102, 241, 0.2)"
+                            alignItems="center"
+                            justifyContent="center"
                           >
-                            {desc}
-                          </Text>
+                            <Image
+                              src={data.icon}
+                              alt="icon"
+                              w="22px"
+                              h="22px"
+                              objectFit="contain"
+                            />
+                          </Flex>
+                          <Box>
+                            <Text
+                              fontSize={{ base: "17px", md: "19px" }}
+                              fontWeight="700"
+                              fontFamily="'Space Grotesk', sans-serif"
+                              color="#0F172A"
+                              lineHeight={1.25}
+                            >
+                              {data.role}
+                            </Text>
+                            <Text
+                              fontSize="14px"
+                              fontWeight="600"
+                              color="#4F46E5"
+                              mt={0.5}
+                            >
+                              {data.company}
+                            </Text>
+                          </Box>
                         </Flex>
-                      </motion.div>
-                    );
-                  })}
-                </Flex>
-              </Flex>
-              {/* Third Section Ends */}
+
+                        <Badge
+                          px={3}
+                          py={1}
+                          borderRadius="full"
+                          bg="linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%)"
+                          border="1px solid rgba(99, 102, 241, 0.25)"
+                          color="#4338CA"
+                          fontSize="12px"
+                          fontWeight="600"
+                          textTransform="none"
+                        >
+                          {data.period}
+                        </Badge>
+                      </Flex>
+
+                      {/* Bullet Descriptions */}
+                      <Flex flexDir="column" gap={2} mt={2}>
+                        {data.description.map((desc, idx) => (
+                          <Flex key={idx} alignItems="flex-start" gap={2.5}>
+                            <Box mt={1} flexShrink={0}>
+                              <Icon
+                                as={HiSparkles}
+                                color="#6366F1"
+                                boxSize={3.5}
+                              />
+                            </Box>
+                            <Text
+                              fontSize={{ base: "13px", md: "13.5px" }}
+                              color="#475569"
+                              lineHeight={1.6}
+                            >
+                              {desc}
+                            </Text>
+                          </Flex>
+                        ))}
+                      </Flex>
+                    </Flex>
+                  </Tilt>
+                </motion.div>
+              </Box>
+
+              {/* Spacer on other side for desktop alternating layout */}
+              <Box w={{ base: "0", md: "46%" }} display={{ base: "none", md: "block" }} />
             </Flex>
           );
         })}
-        {/* First Experience Ends */}
       </Flex>
     </Flex>
   );
@@ -250,7 +224,6 @@ const Experience = () => {
 export default Experience;
 
 const experienceData = [
-
   {
     company: "Danam Infotech Pvt. Ltd",
     role: "Full-Stack Developer",
@@ -297,22 +270,21 @@ const experienceData = [
     icon: dev,
     period: "Nov 2023 - Apr 2024",
     description: [
-      "In my last acacdemic year 2024 I choose a Internship in Jilaba Software Service Pvt. Ltd as a Technical Support Executive .",
+      "In my last academic year 2024 I chose an Internship in Jilaba Software Service Pvt. Ltd as a Technical Support Executive.",
       "Wrote MSSQL queries to analyse application records and find the root cause of issues, such as fields being passed empty or going missing.",
       "Investigated data and bugs, resolved them with optimised SQL queries, and reported the findings to the team lead.",
       "Used SQL Server Profiler to trace running queries, find slow or problematic ones, and prepared reports from the results.",
       "Handled software installation and setup, and debugged application and database issues as part of the support role.",
     ],
   },
-
   {
     company: "Internshala",
     role: "Trainee - Internship",
     icon: dev,
     period: "Mar 2023 - May 2023",
     description: [
-      "Worked in HTML , CSS , Bootstrap, DBMS",
-      "During my college days, I had the opportunity to work in an industrial environment, where I gained hands-on experience and developed flexibility in adapting to real-world workflows and team dynamics. This exposure helped me bridge the gap between academic learning and practical application, enhancing both my technical and interpersonal skills."
-    ]
-  }
+      "Worked in HTML, CSS, Bootstrap, DBMS.",
+      "During my college days, I had the opportunity to work in an industrial environment, where I gained hands-on experience and developed flexibility in adapting to real-world workflows and team dynamics. This exposure helped me bridge the gap between academic learning and practical application, enhancing both my technical and interpersonal skills.",
+    ],
+  },
 ];

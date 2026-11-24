@@ -1,47 +1,52 @@
-import { Divider, Flex, Grid } from "@chakra-ui/react";
+import { Box, Flex, Grid, Text } from "@chakra-ui/react";
 import TypewriterText from "../../Components/TypewriterText";
-import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { PROJECTS } from "../../common";
 
 const Project = () => {
-  const text = "P r o j e c t s ".split(" ");
+  const text = "P R O J E C T S ".split(" ");
 
   return (
     <Flex
-      width={"100%"}
-      flexDir={"column"}
-      justifyContent={"center"}
       id="projects"
-      alignItems={"center"}
-      // px={10}
-      py={20}
-      gap={10}
+      w="100%"
+      maxW="1320px"
+      mx="auto"
+      flexDir="column"
+      alignItems="center"
+      py={{ base: 14, md: 24 }}
+      px={{ base: 4, md: 8 }}
+      position="relative"
     >
-      <Flex flexDir={"column"}>
+      {/* Title */}
+      <Flex flexDir="column" alignItems="center" mb={{ base: 10, md: 14 }}>
         <TypewriterText text={text} />
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{
-            width: "100%", // Slide in to its original position
-            transition: {
-              duration: 1, // Animation duration
-              delay: 0.8,
-            },
-          }}
-          viewport={{ once: true }}
+        <Box
+          w="60px"
+          h="3px"
+          borderRadius="full"
+          background="linear-gradient(90deg, #7C3AED, #22D3EE)"
+          mt={2}
+        />
+        <Text
+          fontSize={{ base: "14px", md: "16px" }}
+          color="#64748B"
+          mt={3}
+          textAlign="center"
         >
-          <Divider borderColor="brand.buttonGreen" borderWidth={2} />
-        </motion.div>
+          Selected web applications, platforms and systems I&apos;ve built
+        </Text>
       </Flex>
-      {/* Project Card */}
+
+      {/* Projects Grid */}
       <Grid
         templateColumns={{
-          xl: "repeat(3, 1fr)",
-          md: "repeat(2, 1fr)",
           base: "repeat(1, 1fr)",
+          md: "repeat(2, 1fr)",
+          lg: "repeat(3, 1fr)",
         }}
-        gap={{ xl: 10, lg: 16, md: 10, base: 5 }}
+        gap={{ base: 6, md: 7, lg: 8 }}
+        w="100%"
       >
         {PROJECTS.map((project, index) => (
           <ProjectCard

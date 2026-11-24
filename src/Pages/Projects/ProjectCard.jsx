@@ -1,102 +1,143 @@
 /* eslint-disable react/prop-types */
-import { Link } from "@chakra-ui/react";
-import { Flex, Text, Image, Badge } from "@chakra-ui/react";
+import { Badge, Box, Flex, Icon, Image, Link, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { FiExternalLink } from "react-icons/fi";
+import Tilt from "react-parallax-tilt";
+
 const ProjectCard = ({ title, description, image, stack, nlink }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{
-        opacity: 1,
-        y: 0, // Slide in to its original position
-        transition: {
-          duration: 0.5, // Animation duration
-          delay: 0.5,
-        },
-      }}
-      viewport={{ once: true }}
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true, margin: "-40px" }}
+      style={{ height: "100%" }}
     >
-      <Flex
-        w={{ lg: "350px", md: "320px", base: "300px" }}
-        flexDir={"column"}
-        borderRadius="15px"
-        pb={4}
-        mb="1rem"
-        h={"100%"}
-        bg={"brand.cardBg"}
-        border={"1px solid"}
-        borderColor={"brand.cardBorder"}
-        boxShadow={"0 4px 20px rgba(0, 0, 0, 0.08)"}
-        alignItems={"center"}
+      <Tilt
+        perspective={1000}
+        glareEnable={true}
+        glareMaxOpacity={0.08}
+        glareColor="#6366F1"
+        glareBorderRadius="24px"
+        scale={1.02}
+        transitionSpeed={1200}
+        style={{ height: "100%" }}
       >
-        {/* Hero Image */}
-        <Image
-          src={image}
-          alt={title}
-          borderRadius="10px"
-          height={{ lg: "280px", md: "250px", base: "200px" }}
-          w={{ lg: "280px", md: "270px", base: "250px" }}
-          objectFit={"cover"}
-          mt={6}
-        />
+        <Flex
+          flexDir="column"
+          borderRadius="24px"
+          overflow="hidden"
+          h="100%"
+          bg="rgba(255, 255, 255, 0.85)"
+          backdropFilter="blur(16px)"
+          border="1px solid rgba(226, 232, 240, 0.9)"
+          boxShadow="0 14px 34px -10px rgba(99, 102, 241, 0.08), 0 4px 6px rgba(0, 0, 0, 0.02)"
+          transition="all 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
+          _hover={{
+            borderColor: "rgba(99, 102, 241, 0.4)",
+            boxShadow:
+              "0 22px 45px -12px rgba(99, 102, 241, 0.2), 0 0 20px rgba(34, 211, 238, 0.15)",
+            transform: "translateY(-6px)",
+          }}
+          p={5}
+        >
+          {/* Card Hero Image */}
+          <Box
+            w="100%"
+            h={{ base: "190px", md: "210px" }}
+            borderRadius="18px"
+            overflow="hidden"
+            bg="rgba(241, 245, 255, 0.8)"
+            position="relative"
+            mb={4}
+          >
+            <Image
+              src={image}
+              alt={title}
+              w="100%"
+              h="100%"
+              objectFit="cover"
+              transition="transform 0.5s ease"
+              _hover={{ transform: "scale(1.05)" }}
+            />
+          </Box>
 
-        {/* Main Content */}
-        <Flex mt="1.2rem" flexDir={"column"} gap={2} overflow={"hidden"} px={8}>
-          <Text
-            fontSize={{ lg: "20px", md: "16px", base: "15px" }}
-            color="brand.white"
-            fontWeight={"bold"}
-          >
-            {title}
-          </Text>
-          <Text
-            color={"brand.textMuted"}
-            fontSize={{ lg: "13px", md: "12px", base: "11px" }}
-            lineHeight={1.6}
-          >
-            {description}
-          </Text>
-          {nlink && (
-            <Text
-              color={"brand.white"}
-              fontSize={{ lg: "13px", md: "12px", base: "11px" }}
-            >
-              Link :{" "}
-              <Link
-                href={nlink}
-                color="brand.buttonGreen"
-                p={1}
-                fontSize={{ lg: "13px", md: "12px", base: "11px" }}
-                isExternal
-                fontWeight={500}
+          {/* Content */}
+          <Flex flexDir="column" flex="1" justifyContent="space-between">
+            <Box>
+              <Text
+                fontSize={{ base: "18px", md: "20px" }}
+                color="#0F172A"
+                fontWeight="700"
+                fontFamily="'Space Grotesk', sans-serif"
+                lineHeight={1.3}
+                mb={2}
               >
-                {nlink}
-              </Link>
-            </Text>
-          )}
+                {title}
+              </Text>
 
-          <Flex align="center" gap={2} mt={"5px"} wrap={"wrap"}>
-            {stack?.map((data, i) => {
-              return (
-                <Badge
-                  key={i}
-                  variant="subtle"
-                  bg={"brand.tagBg"}
-                  color={"brand.buttonGreen"}
-                  border={"1px solid"}
-                  borderColor={"brand.buttonGreen"}
-                  px={2}
-                  py={0.5}
-                  borderRadius={20}
-                  fontSize={"11px"}
+              <Text
+                color="#475569"
+                fontSize="13px"
+                lineHeight={1.65}
+                mb={4}
+                noOfLines={4}
+              >
+                {description}
+              </Text>
+            </Box>
+
+            <Box pt={2}>
+              {/* Tech Stack Badges */}
+              <Flex wrap="wrap" gap={1.5} mb={nlink ? 4 : 1}>
+                {stack?.map((tech, i) => (
+                  <Badge
+                    key={i}
+                    px={2.5}
+                    py={0.5}
+                    borderRadius="full"
+                    bg="rgba(99, 102, 241, 0.08)"
+                    border="1px solid rgba(99, 102, 241, 0.2)"
+                    color="#4F46E5"
+                    fontSize="11px"
+                    fontWeight="600"
+                    textTransform="none"
+                  >
+                    {tech}
+                  </Badge>
+                ))}
+              </Flex>
+
+              {/* Action Link Button if provided */}
+              {nlink && (
+                <Link
+                  href={nlink}
+                  isExternal
+                  display="inline-flex"
+                  alignItems="center"
+                  gap={1.5}
+                  fontSize="13px"
+                  fontWeight="600"
+                  color="#4338CA"
+                  px={3}
+                  py={1.5}
+                  borderRadius="full"
+                  bg="rgba(99, 102, 241, 0.08)"
+                  transition="all 0.2s ease"
+                  _hover={{
+                    textDecoration: "none",
+                    bg: "linear-gradient(135deg, #7C3AED, #6366F1)",
+                    color: "white",
+                    transform: "translateX(2px)",
+                  }}
                 >
-                  {data}
-                </Badge>
-              );
-            })}
+                  Visit Project <Icon as={FiExternalLink} boxSize={3.5} />
+                </Link>
+              )}
+            </Box>
           </Flex>
         </Flex>
-      </Flex>
+      </Tilt>
     </motion.div>
   );
 };

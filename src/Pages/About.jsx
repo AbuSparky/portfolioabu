@@ -1,213 +1,214 @@
-import {
-  Flex,
-  Text,
-  Code,
-  Image,
-  useColorMode,
-} from "@chakra-ui/react";
-import bg from "../assets/aboutbg4.png";
+import { Badge, Box, Flex, Image, Text } from "@chakra-ui/react";
 import aboutRight from "../assets/nihamath.jpg";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
+import { HiSparkles } from "react-icons/hi2";
 
 const About = () => {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === "dark";
-
   return (
     <Flex
-      bgImg={isDark ? bg : undefined}
-      bgSize="cover"
-      w="100%"
-      alignItems="center"
-      bgBlendMode={isDark ? "darken" : "normal"}
-      color="brand.white"
       id="about"
-      py={{ base: 10, md: 12, lg: 20 }}
-      flexDir={{ base: "column", md: "row" }}
+      w="100%"
+      maxW="1320px"
+      mx="auto"
+      alignItems="center"
+      justifyContent="space-between"
+      py={{ base: 14, md: 24 }}
+      px={{ base: 5, md: 8, lg: 12 }}
+      flexDir={{ base: "column-reverse", lg: "row" }}
+      gap={{ base: 10, lg: 12 }}
+      position="relative"
     >
-      {/* Left Side */}
-      <Flex
-        flexDir={"column"}
-        justifyContent={"center"}
-        height={"100%"}
-        w={{ lg: "70%" }}
-        gap={{ lg: 5, md: 8, base: 6 }}
-        alignItems={"center"}
-      >
-        <Flex
-          width={{ lg: "80%", md: "85%", base: "90%" }}
-          alignSelf={{ lg: "center", base: "center" }}
-          zIndex={2}
-          mt={4}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{
-              opacity: 1,
-              y: 0, // Slide in to its original position
-              transition: {
-                duration: 0.5, // Animation duration
-                delay: 0.5,
-              },
-            }}
-            viewport={{ once: true }}
-          >
-            <Text
-              fontSize={{ lg: "4xl", md: "26px", base: "2xl" }}
-              fontWeight="bold"
-              border={"1px solid"}
-              borderColor={"brand.buttonGreen"}
-              textAlign={"center"}
-              width={{ lg: "250px", md: "180px", base: "150px" }}
-              borderRadius={"20px 0 20px 0"}
-              bg={"brand.cardBg"}
-              color={"brand.white"}
-            >
-              About Me
-            </Text>
-          </motion.div>
-        </Flex>
-
+      {/* Left Side: Story & Terminal Glass Card */}
+      <Flex flexDir="column" w={{ lg: "62%", base: "100%" }} zIndex={2}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{
-            opacity: 1,
-            y: 0, // Slide in to its original position
-            transition: {
-              duration: 0.5, // Animation duration
-              delay: 0.5,
-            },
-          }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <Badge
+            display="inline-flex"
+            alignItems="center"
+            gap={1.5}
+            px={3}
+            py={1}
+            borderRadius="full"
+            bg="rgba(99, 102, 241, 0.08)"
+            border="1px solid rgba(99, 102, 241, 0.2)"
+            color="#4F46E5"
+            fontSize="12px"
+            fontWeight="600"
+            textTransform="none"
+            mb={3}
+          >
+            <HiSparkles /> About Me
+          </Badge>
+
+          <Text
+            fontSize={{ base: "28px", sm: "36px", md: "42px" }}
+            fontWeight="800"
+            fontFamily="'Space Grotesk', sans-serif"
+            color="#0F172A"
+            lineHeight={1.2}
+            mb={6}
+          >
+            Crafting Scalable,{" "}
+            <Box as="span" className="gradient-text">
+              High-Impact
+            </Box>{" "}
+            Web Solutions
+          </Text>
+        </motion.div>
+
+        {/* Glassmorphic Code Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
           viewport={{ once: true }}
         >
           <Flex
-            flexDirection={"column"}
-            gap={2}
-            fontSize={{ lg: 16, md: 14, base: 12 }}
-            width={{ lg: "80%", md: "85%", base: "90%" }}
-            p={{ md: 6, base: 4 }}
-            borderRadius={{ md: 30, base: 20 }}
-            bg={"brand.codeBg"}
-            border={"1px solid"}
-            borderColor={"brand.cardBorder"}
-            boxShadow={"0 8px 30px rgba(0, 0, 0, 0.08)"}
-            alignSelf={{ lg: "center", base: "center" }}
-            zIndex={100}
-            m={"auto"}
+            flexDir="column"
+            p={{ base: 5, sm: 6, md: 8 }}
+            borderRadius="24px"
+            bg="rgba(255, 255, 255, 0.88)"
+            backdropFilter="blur(20px)"
+            border="1px solid rgba(226, 232, 240, 0.9)"
+            boxShadow="0 20px 45px -15px rgba(99, 102, 241, 0.1), 0 4px 6px rgba(0, 0, 0, 0.02)"
+            position="relative"
+            overflow="hidden"
           >
-            <Code bg={"none"} color={"brand.buttonGreen"}>
-              {"<!--"}
-            </Code>
-            <Flex flexDir={"column"} px={2} gap={2}>
-              <Code bg={"none"} color={"brand.buttonGreen"} fontSize={20}>
-                Hello!..
-              </Code>
-              <Code bg={"none"} color={"brand.white"}>
-                Hi, I&apos;m Nihamath, a passionate Full-Stack Developer with over a year
-                of experience building end-to-end web applications. I love turning ideas
-                into fast, scalable and user-friendly products, from pixel-perfect
-                interfaces to secure, high-performance APIs and well-structured databases.
-                I have hands-on experience with{" "}
-                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>
-                  React.js, Next.js, Node.js, Express.js, SQL, MongoDB, PostgreSQL
-                </span>
-                , and I&apos;m familiar with{" "}
-                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>backend &amp; backendless</span>{" "}
-                technology. On the DevOps side, I deploy and manage applications using{" "}
-                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>
-                  AWS, Hostinger, Docker and CI/CD pipelines
-                </span>{" "}
-                for smooth, automated releases. I write clean, maintainable code in{" "}
-                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>
-                  JavaScript, Java, Python and SQL
-                </span>
-                , and I enjoy solving real-world problems, learning new tools and shipping
-                features that make a difference. I also use AI tools like{" "}
-                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>
-                  Claude, ChatGPT, GitHub Copilot and Cursor
-                </span>{" "}
-                to speed up development, debug faster and ship better features.
-              </Code>
-              <Code bg={"none"} color={"brand.white"}>
-                {" "}
-                I love taking on complex tasks and finding creative solutions to
-                challenging problems, especially when it comes to{" "}
-                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>debugging</span> and
-                improving code.
-              </Code>
-              <Code bg={"none"} color={"brand.white"}>
-                {" "}
-                I&apos;m constantly exploring new technologies and pushing
-                myself to grow as a developer. My goal is to{" "}
-                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>keep learning</span> and
-                contribute to projects that have a meaningful impact.
-              </Code>
-              <Code bg={"none"} color={"brand.white"}>
-                {" "}
-                When I&apos;m not coding, I enjoy reading books and travelling, which help me stay creative and inspired.
-              </Code>
+            {/* Window header dots */}
+            <Flex align="center" gap={2} mb={5} pb={3} borderBottom="1px solid rgba(226, 232, 240, 0.8)">
+              <Box w="10px" h="10px" borderRadius="full" bg="#EF4444" opacity={0.8} />
+              <Box w="10px" h="10px" borderRadius="full" bg="#F59E0B" opacity={0.8} />
+              <Box w="10px" h="10px" borderRadius="full" bg="#10B981" opacity={0.8} />
+              <Text fontSize="12px" color="#94A3B8" fontWeight="500" ml={2}>
+                developer-bio.md
+              </Text>
             </Flex>
-            <Code bg={"none"} color={"brand.buttonGreen"}>
-              {"--!>"}
-            </Code>
+
+            <Flex flexDir="column" gap={3.5} fontSize={{ base: "13.5px", md: "15px" }} color="#334155" lineHeight={1.7}>
+              <Text>
+                Hi, I&apos;m <Text as="strong" color="#0F172A">Nihamath</Text>, a passionate{" "}
+                <Text as="span" fontWeight="600" color="#4F46E5">
+                  Full-Stack Developer
+                </Text>{" "}
+                with over a year of experience building end-to-end web applications. I love turning ideas
+                into fast, scalable and user-friendly products, from pixel-perfect interfaces to secure,
+                high-performance APIs and well-structured databases.
+              </Text>
+
+              <Text>
+                I have hands-on experience with{" "}
+                <Text as="span" fontWeight="600" color="#7C3AED">
+                  React.js, Next.js, Node.js, Express.js, SQL, MongoDB, PostgreSQL
+                </Text>
+                , and I&apos;m familiar with{" "}
+                <Text as="span" fontWeight="600" color="#06B6D4">
+                  backend &amp; backendless
+                </Text>{" "}
+                technology. On the DevOps side, I deploy and manage applications using{" "}
+                <Text as="span" fontWeight="600" color="#4F46E5">
+                  AWS, Hostinger, Docker and CI/CD pipelines
+                </Text>{" "}
+                for smooth, automated releases.
+              </Text>
+
+              <Text>
+                I write clean, maintainable code in{" "}
+                <Text as="span" fontWeight="600" color="#0F172A">
+                  JavaScript, Java, Python and SQL
+                </Text>
+                , and I enjoy solving real-world problems, learning new tools and shipping features that make a difference. I also use AI tools like{" "}
+                <Text as="span" fontWeight="600" color="#7C3AED">
+                  Claude, ChatGPT, GitHub Copilot and Cursor
+                </Text>{" "}
+                to speed up development, debug faster and ship better features.
+              </Text>
+
+              <Text>
+                I love taking on complex tasks and finding creative solutions to challenging problems, especially when it comes to{" "}
+                <Text as="span" fontWeight="600" color="#4F46E5">
+                  debugging
+                </Text>{" "}
+                and improving code.
+              </Text>
+
+              <Text>
+                I&apos;m constantly exploring new technologies and pushing myself to grow as a developer. My goal is to{" "}
+                <Text as="span" fontWeight="600" color="#06B6D4">
+                  keep learning
+                </Text>{" "}
+                and contribute to projects that have a meaningful impact.
+              </Text>
+
+              <Text color="#64748B" fontStyle="italic" pt={1}>
+                When I&apos;m not coding, I enjoy reading books and travelling, which help me stay creative and inspired.
+              </Text>
+            </Flex>
           </Flex>
         </motion.div>
-        {/* For mobile screen */}
-        <Tilt>
-          <Flex
-            flex={1}
-            justifyContent={"center"}
-            alignItems={"center"}
-            display={{ base: "flex", lg: "none" }}
-          >
-            <Tilt>
-              <Image
-                height={{ lg: "300px", md: "250px", base: "200px" }}
-                width={{ lg: "300px", md: "250px", base: "200px" }}
-                borderRadius={"50%"}
-                src={aboutRight}
-                bg="linear-gradient(to top, #33FFCC, #111111 )" // Gradient background
-                boxShadow="
-                  inset -8px -8px 15px rgba(255, 255, 255, 0.2), 
-                  inset 8px 8px 15px rgba(0, 0, 0, 0.5)         
-                "
-              />
-            </Tilt>
-          </Flex>
-        </Tilt>
       </Flex>
-      {/* Right Side */}
+
+      {/* Right Side: 3D Tilt Portrait */}
       <Flex
-        flex={1}
-        justifyContent={"flex-start"}
-        alignItems={"center"}
-        display={{ base: "none", lg: "flex" }}
+        w={{ lg: "34%", base: "100%" }}
+        justifyContent="center"
+        alignItems="center"
+        zIndex={2}
       >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{
-            opacity: 1,
-            y: 0, // Slide in to its original position
-            transition: {
-              duration: 0.5, // Animation duration
-              delay: 0.5,
-            },
-          }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <Tilt>
-            <Image
-              height={{ xl: "300px", md: "250px", base: "200px" }}
-              width={{ xl: "300px", md: "250px", base: "200px" }}
-              borderRadius={"100%"}
-              src={aboutRight}
-              bg="linear-gradient(to top, #33FFCC, #111111 )" // Gradient background
-              boxShadow="
-                  inset -8px -8px 15px rgba(255, 255, 255, 0.2), 
-                  inset 8px 8px 15px rgba(0, 0, 0, 0.5)         
-                "
-            />
+          <Tilt
+            perspective={1000}
+            glareEnable={true}
+            glareMaxOpacity={0.12}
+            glareColor="#6366F1"
+            glareBorderRadius="36px"
+            scale={1.03}
+            transitionSpeed={1200}
+          >
+            <Box
+              position="relative"
+              p={3}
+              borderRadius="36px"
+              bg="rgba(255, 255, 255, 0.75)"
+              backdropFilter="blur(20px)"
+              border="1px solid rgba(226, 232, 240, 0.9)"
+              boxShadow="0 25px 60px -15px rgba(99, 102, 241, 0.2), 0 0 30px rgba(34, 211, 238, 0.1)"
+            >
+              <Image
+                src={aboutRight}
+                alt="Nihamathullah"
+                w={{ base: "260px", sm: "300px", lg: "320px" }}
+                h={{ base: "260px", sm: "300px", lg: "320px" }}
+                borderRadius="28px"
+                objectFit="cover"
+              />
+
+              {/* Decorative floating badge */}
+              <Box
+                position="absolute"
+                bottom="-12px"
+                right="16px"
+                px={4}
+                py={2}
+                borderRadius="full"
+                bg="white"
+                border="1px solid rgba(99, 102, 241, 0.25)"
+                boxShadow="0 10px 25px rgba(99, 102, 241, 0.15)"
+              >
+                <Text fontSize="12px" fontWeight="700" color="#4338CA">
+                  ⚡ 1+ Year Experience
+                </Text>
+              </Box>
+            </Box>
           </Tilt>
         </motion.div>
       </Flex>

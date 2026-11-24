@@ -3,28 +3,36 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Preloader from "./Components/Preloader/Preloader";
 import MainLayout from "./Layout/MainLayout";
+import SmoothScroll from "./Components/SmoothScroll";
+import CursorGlow from "./Components/CursorGlow";
 
 function App() {
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1200);
     return () => clearTimeout(timer);
   }, []);
+
   return (
-    <Flex
-      bg={"brand.mainBg"}
-      minH={"100vh"}
-      overflowX={"hidden"}
-      w={"100%"}
-      flexDir={"column"}
-      alignItems={"center"}
-      justifyContent={"center"}
-      className="font-link"
-    >
-      {loading ? <Preloader /> : <MainLayout />}
-    </Flex>
+    <SmoothScroll>
+      <CursorGlow />
+      <Flex
+        bg="brand.mainBg"
+        minH="100vh"
+        overflowX="hidden"
+        w="100%"
+        flexDir="column"
+        alignItems="center"
+        justifyContent="center"
+        className="font-link"
+        position="relative"
+      >
+        {loading ? <Preloader /> : <MainLayout />}
+      </Flex>
+    </SmoothScroll>
   );
 }
 

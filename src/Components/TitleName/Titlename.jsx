@@ -6,7 +6,7 @@ const Titlename = () => {
   const messages = [
     "Frontend Developer",
     "Javascript Developer",
-    "React Js Developer",
+    "Full-Stack Developer",
     "Node Js Developer",
     "Web Developer",
     "Web Designer",
@@ -62,8 +62,9 @@ const Titlename = () => {
             }
             fontSize={{ md: "3xl", base: "23px" }}
             fontWeight="bold"
-            color={"#33FFCC"}
-            bg={"none"}
+            fontFamily="'Space Grotesk', sans-serif"
+            bg="none"
+            className="gradient-text"
           >
             {message}
           </Code>

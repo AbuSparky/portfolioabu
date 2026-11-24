@@ -5,33 +5,34 @@ import { motion } from "framer-motion";
 const TypewriterText = ({ text }) => {
   return (
     <Flex
-      fontSize={{ lg: "4xl", md: "3xl", base: "2xl" }}
-      fontWeight="bold"
-      color="brand.white"
+      fontSize={{ base: "26px", sm: "32px", md: "40px", lg: "44px" }}
+      fontWeight="800"
+      fontFamily="'Space Grotesk', sans-serif"
+      letterSpacing="-0.02em"
+      color="#0F172A"
+      wrap="wrap"
+      justify="center"
     >
       {text?.map((el, i) => (
         <motion.span
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{
             opacity: 1,
-            x: 0, // Slide in to its original position
+            y: 0,
             transition: {
-              duration: 1.5, // Animation duration
-              delay: i / 5,
+              duration: 0.4,
+              delay: i * 0.03,
             },
           }}
           viewport={{ once: true }}
           key={i}
           style={{
             display: "inline-block",
-            color:
-              i == 0
-                ? "var(--chakra-colors-brand-buttonGreen)"
-                : "var(--chakra-colors-brand-white)",
+            color: i === 0 ? "#6366F1" : "#0F172A",
             textTransform: "uppercase",
           }}
         >
-          {el}
+          {el === " " ? "\u00A0" : el}
         </motion.span>
       ))}
     </Flex>
