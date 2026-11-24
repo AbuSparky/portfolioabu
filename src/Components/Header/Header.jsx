@@ -5,6 +5,7 @@ import { FaCogs } from "react-icons/fa";
 import { IoHomeSharp, IoPerson } from "react-icons/io5";
 import { MdOutlineWork } from "react-icons/md";
 import logo from "../../assets/Skills/logo.png";
+import ThemeSwitcher from "../ThemeSwitcher";
 
 const Header = () => {
   const [pathHash, setPathHash] = useState(window.location.hash);
@@ -31,15 +32,15 @@ const Header = () => {
       alignItems={"center"}
       py={{ md: 5, base: 4 }}
       pl={6}
-      pr={10}
+      pr={{ md: 8, base: 6 }}
       border={"1px solid "}
-      borderColor={"rgba(63, 63, 63, 0.5)"}
+      borderColor={"brand.headerBorder"}
       zIndex={1000}
-      bg={"rgba(22, 22, 22, 0.1)"}
+      bg={"brand.headerBg"}
       alignSelf={"center"}
       mt={6}
       borderRadius={{ md: 25, base: 15 }}
-      boxShadow={"  0 8px 32px rgba(0, 0, 0, 0.4)"}
+      boxShadow={"0 8px 32px rgba(0, 0, 0, 0.15)"}
       backdropFilter={"blur( 40px )"}
       position={{ base: "fixed", md: "relative" }}
       bottom={{ base: 2, md: "" }}
@@ -55,7 +56,7 @@ const Header = () => {
 
       <Spacer display={{ base: "none", md: "block" }} />
       {/* Nav tabs */}
-      <Flex gap={{ md: 10, base: 10 }} m={"auto"}>
+      <Flex gap={{ md: 10, base: 6 }} m={"auto"}>
         {navTabs.map((data, i) => {
           return (
             <Tooltip
@@ -75,7 +76,7 @@ const Header = () => {
                     color={
                       pathHash === `#${data.name.toLowerCase()}`
                         ? "brand.buttonGreen"
-                        : "white"
+                        : "brand.white"
                     }
                   />
                 </Flex>
@@ -83,6 +84,10 @@ const Header = () => {
             </Tooltip>
           );
         })}
+      </Flex>
+      <Spacer display={{ base: "none", md: "block" }} />
+      <Flex display={{ base: "none", md: "flex" }}>
+        <ThemeSwitcher />
       </Flex>
     </Flex>
   );

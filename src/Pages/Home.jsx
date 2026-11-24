@@ -51,7 +51,10 @@ const Home = () => {
             fontWeight={600}
             color="brand.white"
           >
-            Hello, I&apos;m <span style={{ color: "#33FFCC" }}>Nihamath!</span>
+            Hello, I&apos;m{" "}
+            <span style={{ color: "var(--chakra-colors-brand-buttonGreen)" }}>
+              Nihamath!
+            </span>
           </Text>
         </motion.div>
 
@@ -83,7 +86,7 @@ const Home = () => {
         >
           <Text
             fontSize={{ xl: 18, md: 16, base: 14 }}
-            color="white"
+            color="brand.textSecondary"
             lineHeight={1.5}
             w={{ xl: "80%", md: "90%" }}
           >

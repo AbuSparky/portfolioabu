@@ -16,7 +16,7 @@ const Experience = () => {
       // minH={{ md: "100vh", base: "auto" }}
       gap={10}
       py={20}
-      bg={"rgba(22, 22, 22, 0.3)"}
+      bg={"brand.sectionBg"}
       backdropFilter={"blur(2px)"}
     >
       <Flex flexDir={"column"}>
@@ -101,9 +101,10 @@ const Experience = () => {
                     alignItems={"center"}
                     justifyContent={"center"}
                     borderColor={"brand.buttonGreen"}
+                    bg={"brand.cardBg"}
                     borderRadius={50}
                     p={1.5}
-                    boxShadow=" 1px 0 10px 0px #33FFCC"
+                    boxShadow="0 0 10px rgba(51, 255, 204, 0.4)"
                   >
                     <Image src={data.icon} alt="dev" mt={3} />
                   </Flex>
@@ -128,7 +129,7 @@ const Experience = () => {
                     borderWidth={2}
                     w={0}
                     my={1}
-                    borderColor={"#33FFCC"}
+                    borderColor={"brand.buttonGreen"}
                   />
                 </motion.div>
               </Flex>
@@ -137,7 +138,7 @@ const Experience = () => {
               {/* Second Experience */}
               {/* Third Section Starts */}
               <Flex
-                color={"white"}
+                color={"brand.white"}
                 flexDir={"column"}
                 ml={{ md: 4, base: 2 }}
                 w={{ xl: "35%", lg: "45%", md: "50%", base: "100%" }}
@@ -222,11 +223,11 @@ const Experience = () => {
                           gap={2}
                           w={{ lg: "100%", md: "100%", base: "95%" }}
                         >
-                          <Icon as={CiStar} color={"#33FFCC"} />
+                          <Icon as={CiStar} color={"brand.buttonGreen"} />
                           <Text
                             fontSize={{ md: "14px", base: "12px" }}
                             mt={2}
-                            color={"whiteAlpha.800"}
+                            color={"brand.textSecondary"}
                           >
                             {desc}
                           </Text>

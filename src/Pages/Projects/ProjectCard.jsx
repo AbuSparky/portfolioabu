@@ -23,64 +23,72 @@ const ProjectCard = ({ title, description, image, stack, nlink }) => {
         pb={4}
         mb="1rem"
         h={"100%"}
-        bg={"#1A1A1A"}
+        bg={"brand.cardBg"}
+        border={"1px solid"}
+        borderColor={"brand.cardBorder"}
+        boxShadow={"0 4px 20px rgba(0, 0, 0, 0.08)"}
         alignItems={"center"}
       >
         {/* Hero Image */}
         <Image
           src={image}
-          alt="Spinning glass cube"
+          alt={title}
           borderRadius="10px"
           height={{ lg: "280px", md: "250px", base: "200px" }}
           w={{ lg: "280px", md: "270px", base: "250px" }}
           objectFit={"cover"}
           mt={6}
-          //   height={'20%'}
         />
-        {/* </Box> */}
 
         {/* Main Content */}
         <Flex mt="1.2rem" flexDir={"column"} gap={2} overflow={"hidden"} px={8}>
           <Text
             fontSize={{ lg: "20px", md: "16px", base: "15px" }}
-            color="white"
+            color="brand.white"
             fontWeight={"bold"}
           >
             {title}
           </Text>
           <Text
-            color={"grey"}
+            color={"brand.textMuted"}
             fontSize={{ lg: "13px", md: "12px", base: "11px" }}
+            lineHeight={1.6}
           >
             {description}
           </Text>
-          <Text
-            color={"white"}
-            fontSize={{ lg: "13px", md: "12px", base: "11px" }}
-          >
-            Link  :
-            <Link
-              href={nlink}
-              color="white"
-              p={1}
+          {nlink && (
+            <Text
+              color={"brand.white"}
               fontSize={{ lg: "13px", md: "12px", base: "11px" }}
-              isExternal
             >
-              {nlink}
-            </Link>
-          </Text>
+              Link :{" "}
+              <Link
+                href={nlink}
+                color="brand.buttonGreen"
+                p={1}
+                fontSize={{ lg: "13px", md: "12px", base: "11px" }}
+                isExternal
+                fontWeight={500}
+              >
+                {nlink}
+              </Link>
+            </Text>
+          )}
 
-          <Flex align="center" gap={4} mt={"5px"} wrap={"wrap"}>
+          <Flex align="center" gap={2} mt={"5px"} wrap={"wrap"}>
             {stack?.map((data, i) => {
               return (
                 <Badge
                   key={i}
-                  variant="outline"
-                  colorScheme="teal"
+                  variant="subtle"
+                  bg={"brand.tagBg"}
+                  color={"brand.buttonGreen"}
+                  border={"1px solid"}
+                  borderColor={"brand.buttonGreen"}
                   px={2}
-                  py={1}
+                  py={0.5}
                   borderRadius={20}
-                  color={"#33FFCC"}
+                  fontSize={"11px"}
                 >
                   {data}
                 </Badge>

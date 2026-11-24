@@ -1,9 +1,9 @@
 import {
   Flex,
   Text,
-
   Code,
   Image,
+  useColorMode,
 } from "@chakra-ui/react";
 import bg from "../assets/aboutbg4.png";
 import aboutRight from "../assets/nihamath.jpg";
@@ -11,15 +11,17 @@ import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 
 const About = () => {
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === "dark";
+
   return (
     <Flex
-      bgImg={bg}
+      bgImg={isDark ? bg : undefined}
       bgSize="cover"
-      // minH={{ lg: "100vh", base: "auto" }}
       w="100%"
       alignItems="center"
-      bgBlendMode={"darken"}
-      color="white"
+      bgBlendMode={isDark ? "darken" : "normal"}
+      color="brand.white"
       id="about"
       py={{ base: 10, md: 12, lg: 20 }}
       flexDir={{ base: "column", md: "row" }}
@@ -59,7 +61,8 @@ const About = () => {
               textAlign={"center"}
               width={{ lg: "250px", md: "180px", base: "150px" }}
               borderRadius={"20px 0 20px 0"}
-              bg={"black"}
+              bg={"brand.cardBg"}
+              color={"brand.white"}
             >
               About Me
             </Text>
@@ -85,64 +88,67 @@ const About = () => {
             width={{ lg: "80%", md: "85%", base: "90%" }}
             p={{ md: 6, base: 4 }}
             borderRadius={{ md: 30, base: 20 }}
-            bg={"#1D2023"}
+            bg={"brand.codeBg"}
+            border={"1px solid"}
+            borderColor={"brand.cardBorder"}
+            boxShadow={"0 8px 30px rgba(0, 0, 0, 0.08)"}
             alignSelf={{ lg: "center", base: "center" }}
             zIndex={100}
             m={"auto"}
           >
-            <Code bg={"none"} color={"#33FFCC"}>
+            <Code bg={"none"} color={"brand.buttonGreen"}>
               {"<!--"}
             </Code>
             <Flex flexDir={"column"} px={2} gap={2}>
-              <Code bg={"none"} color={"#33FFCC"} fontSize={20}>
+              <Code bg={"none"} color={"brand.buttonGreen"} fontSize={20}>
                 Hello!..
               </Code>
-              <Code bg={"none"} color={"white"}>
+              <Code bg={"none"} color={"brand.white"}>
                 Hi, I&apos;m Nihamath, a passionate Full-Stack Developer with over a year
                 of experience building end-to-end web applications. I love turning ideas
                 into fast, scalable and user-friendly products, from pixel-perfect
                 interfaces to secure, high-performance APIs and well-structured databases.
                 I have hands-on experience with{" "}
-                <span style={{ color: "#33FFCC" }}>
+                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>
                   React.js, Next.js, Node.js, Express.js, SQL, MongoDB, PostgreSQL
                 </span>
                 , and I&apos;m familiar with{" "}
-                <span style={{ color: "#33FFCC" }}>backend &amp; backendless</span>{" "}
+                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>backend &amp; backendless</span>{" "}
                 technology. On the DevOps side, I deploy and manage applications using{" "}
-                <span style={{ color: "#33FFCC" }}>
+                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>
                   AWS, Hostinger, Docker and CI/CD pipelines
                 </span>{" "}
                 for smooth, automated releases. I write clean, maintainable code in{" "}
-                <span style={{ color: "#33FFCC" }}>
+                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>
                   JavaScript, Java, Python and SQL
                 </span>
                 , and I enjoy solving real-world problems, learning new tools and shipping
                 features that make a difference. I also use AI tools like{" "}
-                <span style={{ color: "#33FFCC" }}>
+                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>
                   Claude, ChatGPT, GitHub Copilot and Cursor
                 </span>{" "}
                 to speed up development, debug faster and ship better features.
               </Code>
-              <Code bg={"none"} color={"white"}>
+              <Code bg={"none"} color={"brand.white"}>
                 {" "}
                 I love taking on complex tasks and finding creative solutions to
                 challenging problems, especially when it comes to{" "}
-                <span style={{ color: "#33FFCC" }}>debugging</span> and
+                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>debugging</span> and
                 improving code.
               </Code>
-              <Code bg={"none"} color={"white"}>
+              <Code bg={"none"} color={"brand.white"}>
                 {" "}
                 I&apos;m constantly exploring new technologies and pushing
                 myself to grow as a developer. My goal is to{" "}
-                <span style={{ color: "#33FFCC" }}>keep learning</span> and
+                <span style={{ color: "var(--chakra-colors-brand-buttonGreen)", fontWeight: 600 }}>keep learning</span> and
                 contribute to projects that have a meaningful impact.
               </Code>
-              <Code bg={"none"} color={"white"}>
+              <Code bg={"none"} color={"brand.white"}>
                 {" "}
                 When I&apos;m not coding, I enjoy reading books and travelling, which help me stay creative and inspired.
               </Code>
             </Flex>
-            <Code bg={"none"} color={"#33FFCC"}>
+            <Code bg={"none"} color={"brand.buttonGreen"}>
               {"--!>"}
             </Code>
           </Flex>

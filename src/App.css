@@ -7,15 +7,15 @@
   height: 2px;
 }
 ::-webkit-scrollbar-track {
-  background-color: #111111;
+  background-color: var(--chakra-colors-brand-mainBg, #111111);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #33ffcc;
+  background-color: var(--chakra-colors-brand-buttonGreen, #33ffcc);
   -webkit-border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #33ffcc50;
+  background-color: var(--chakra-colors-brand-buttonGreen, #33ffcc80);
   -webkit-border-radius: 10px;
 }
 

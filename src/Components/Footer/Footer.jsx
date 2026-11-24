@@ -27,7 +27,7 @@ const Footer = () => {
         objectFit={"contain"}
       />
       {/* Copyright */}{" "}
-      <Text color={"white"} fontSize={{ md: 16, base: 14 }}>
+      <Text color={"brand.textSecondary"} fontSize={{ md: 16, base: 14 }}>
         © {year} Nihamathullah S. All rights reserved.{" "}
       </Text>
       {/* Logo */}
@@ -42,17 +42,23 @@ const Footer = () => {
               width={{ md: "40px", base: "35px" }}
               height={{ md: "40px", base: "35px" }}
               borderRadius={50}
-              borderColor={"brand.white"}
+              borderColor={"brand.buttonGreen"}
+              bg={"brand.cardBg"}
               key={i}
               onClick={() => {
                 window.open(data.link, "_blank");
               }}
               cursor={"pointer"}
+              transition={"transform 0.2s ease, border-color 0.2s ease"}
+              _hover={{
+                transform: "translateY(-3px)",
+                borderColor: "brand.buttonGreen",
+              }}
             >
               <Icon
                 as={data.iconName}
                 boxSize={{ lg: 6, base: 5 }}
-                color={"brand.white"}
+                color={"brand.buttonGreen"}
               />
             </Flex>
           );

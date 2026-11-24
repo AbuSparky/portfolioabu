@@ -7,7 +7,7 @@ const TypewriterText = ({ text }) => {
     <Flex
       fontSize={{ lg: "4xl", md: "3xl", base: "2xl" }}
       fontWeight="bold"
-      color="white"
+      color="brand.white"
     >
       {text?.map((el, i) => (
         <motion.span
@@ -24,7 +24,10 @@ const TypewriterText = ({ text }) => {
           key={i}
           style={{
             display: "inline-block",
-            color: i == 0 ? "#33FFCC" : "white",
+            color:
+              i == 0
+                ? "var(--chakra-colors-brand-buttonGreen)"
+                : "var(--chakra-colors-brand-white)",
             textTransform: "uppercase",
           }}
         >

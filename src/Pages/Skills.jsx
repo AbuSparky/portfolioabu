@@ -79,7 +79,11 @@ const Skills = () => {
           }}
           viewport={{ once: true }}
         >
-          <Text fontSize={{ lg: "18px", md: "16px", base: "15px" }} mb={4}>
+          <Text
+            fontSize={{ lg: "18px", md: "16px", base: "15px" }}
+            mb={4}
+            color={"brand.textSecondary"}
+          >
             The skills,tools and technologies i use:
           </Text>
         </motion.div>
@@ -127,17 +131,16 @@ const Skills = () => {
                     borderRadius={{ lg: 20, base: 15 }}
                     border={"1px solid"}
                     borderColor={"brand.buttonGreen"}
+                    bg={"brand.cardBg"}
+                    boxShadow={"0 4px 12px rgba(0, 0, 0, 0.05)"}
                     as={Flex}
                     alignItems={"center"}
                     justifyContent={"center"}
-                    // box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
                     _hover={{
-                      boxShadow: " rgba(25,202,164,0.9) 8px -4px 0px 0px ", // Apply shadow on front and right sides
-                      // "rgba(25,202,164,0.5) 4px 0px 0px 0px, rgba(25,202,164,0.5) -4px 0px 0px 0px, rgba(25,202,164,0.5) 0px 4px 0px 0px", // Apply shadow on front and right sides
-                      transform: "rotateY(45deg) rotateZ(20deg)", // Apply rotation on Y and X axis
+                      boxShadow: "rgba(25,202,164,0.9) 8px -4px 0px 0px",
+                      transform: "rotateY(45deg) rotateZ(20deg)",
                     }}
                     transition={"transform 1.5s ease, box-shadow 1s ease"}
-                  // transition: transform 1.5s ease;
                   >
                     {typeof skill.icon === "string" ? (
                       <Image
@@ -150,9 +153,9 @@ const Skills = () => {
                     )}
                   </Flex>
                   <Text
-                    color={"whiteAlpha.700"}
+                    color={"brand.textSecondary"}
                     fontSize={14}
-                    fontWeight={300}
+                    fontWeight={400}
                     textAlign={"center"}
                     mt={1}
                   >

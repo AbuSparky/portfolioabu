@@ -1,37 +1,32 @@
 /* eslint-disable react/prop-types */
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useMemo, useState } from "react";
-// import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
-// import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-// import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
+import { useColorMode } from "@chakra-ui/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const ParticlesComponent = (props) => {
   const [init, setInit] = useState(false);
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === "dark";
+
   // this should be run only once per application lifetime
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
       await loadSlim(engine);
-      //await loadBasic(engine);
     }).then(() => {
       setInit(true);
     });
   }, []);
 
   const particlesLoaded = (container) => {
-    console.log(container);
+    // container loaded
   };
 
   const options = useMemo(
     () => ({
       background: {
         color: {
-          value: "#111111 ",
+          value: "transparent",
         },
       },
       fpsLimit: 120,
@@ -58,10 +53,10 @@ const ParticlesComponent = (props) => {
       },
       particles: {
         color: {
-          value: "#33FFCC80",
+          value: isDark ? "#33FFCC80" : "#0D948880",
         },
         links: {
-          color: "#33FFCC",
+          color: isDark ? "#33FFCC" : "#0D9488",
           distance: 0,
           enable: true,
           opacity: 0,
@@ -95,7 +90,7 @@ const ParticlesComponent = (props) => {
       },
       detectRetina: true,
     }),
-    []
+    [isDark]
   );
 
   return <Particles id={props.id} init={particlesLoaded} options={options} />;
