@@ -7,6 +7,7 @@ import Experience from "../Pages/Experience";
 import Project from "../Pages/Projects/Project";
 import Footer from "../Components/Footer/Footer";
 import SectionDivider from "../Components/SectionDivider";
+import ScrollReveal from "../Components/ScrollReveal";
 
 const MainLayout = () => {
   return (
@@ -19,17 +20,29 @@ const MainLayout = () => {
       {/* Floating Glass Pill Navbar */}
       <Header />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections with Scroll Transitions */}
       <Flex flexDir="column" position="relative" zIndex={2} w="100%">
         <Home />
         <SectionDivider />
-        <About />
+
+        <ScrollReveal yOffset={45} delay={0.05}>
+          <About />
+        </ScrollReveal>
         <SectionDivider />
-        <Skills />
+
+        <ScrollReveal yOffset={45} delay={0.05}>
+          <Skills />
+        </ScrollReveal>
         <SectionDivider />
-        <Experience />
+
+        <ScrollReveal yOffset={45} delay={0.05}>
+          <Experience />
+        </ScrollReveal>
         <SectionDivider />
-        <Project />
+
+        <ScrollReveal yOffset={45} delay={0.05}>
+          <Project />
+        </ScrollReveal>
       </Flex>
 
       {/* Footer */}

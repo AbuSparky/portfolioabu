@@ -94,10 +94,14 @@ const Experience = () => {
               {/* 3D Tilt Experience Card Container */}
               <Box w={{ base: "100%", md: "46%" }}>
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  initial={{
+                    opacity: 0,
+                    y: 25,
+                    x: isEven ? -25 : 25,
+                  }}
+                  whileInView={{ opacity: 1, y: 0, x: 0 }}
+                  transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                  viewport={{ once: true, amount: 0.2 }}
                 >
                   <Tilt
                     perspective={1000}

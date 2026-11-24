@@ -142,10 +142,14 @@ const Skills = () => {
           return (
             <motion.div
               key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: (index % 6) * 0.06 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: (index % 6) * 0.07,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              viewport={{ once: true, amount: 0.15 }}
             >
               <Tilt
                 perspective={1000}

@@ -22,10 +22,10 @@ const About = () => {
       {/* Left Side: Story & Terminal Glass Card */}
       <Flex flexDir="column" w={{ lg: "62%", base: "100%" }} zIndex={2}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 25, x: -20 }}
+          whileInView={{ opacity: 1, y: 0, x: 0 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <Badge
             display="inline-flex"
@@ -63,10 +63,10 @@ const About = () => {
 
         {/* Glassmorphic Code Card */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 35, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <Flex
             flexDir="column"
@@ -160,10 +160,10 @@ const About = () => {
         zIndex={2}
       >
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, scale: 0.94, x: 30 }}
+          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <Tilt
             perspective={1000}
