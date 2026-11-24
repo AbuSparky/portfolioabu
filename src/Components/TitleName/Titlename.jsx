@@ -1,85 +1,68 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
-import { Box, Code, Flex } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Box, Text } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
+
+const messages = [
+  "Full-Stack Developer",
+  "Frontend Developer",
+  "Javascript Developer",
+  "Node Js Developer",
+  "React Js Developer",
+  "Web Developer",
+  "Web Designer",
+  "Java Developer",
+  "SQL / Database Engineer",
+];
 
 const Titlename = () => {
-  const messages = [
-    "Frontend Developer",
-    "Javascript Developer",
-    "Full-Stack Developer",
-    "Node Js Developer",
-    "Web Developer",
-    "Web Designer",
-    "Java Developer",
-    "Sql-MSSQl Server",
-    "Full Stack Developer"
-  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % messages.length);
-    }, 2000);
+    }, 2400);
 
     return () => clearInterval(interval);
   }, []);
+
   return (
-    <Flex w={"100%"}>
-      {/* <Code
-        fontSize={{ md: "3xl" }}
-        fontWeight="bold"
-        color={"#e4bb68"}
-        bg={"none"}
-        display={{ base: "none", md: "block" }}
-      >
-        <span style={{ color: "#268BD2" }}>Console.log</span>(
-        <span style={{ color: "#33FFCC" }}>&quot;</span>
-      </Code> */}
-      <Box
-        position="relative"
-        width={{ xl: "50%", lg: "80%", md: "400px", base: "100%" }}
-        height={{ base: "40px", md: "50px" }}
-        overflow="hidden"
-        display="flex"
-        // justifyContent="center"
-        // alignItems="center"
-      >
-        {messages.map((message, index) => (
-          <Code
-            key={index}
-            position="absolute"
-            top={
-              currentIndex === index
-                ? "0"
-                : currentIndex > index
-                ? "-100%"
-                : "100%"
-            }
-            opacity={currentIndex === index ? 1 : 0}
-            transition="all 0.8s linear"
-            transform={
-              currentIndex === index ? "translateY(0)" : "translateY(0)"
-            }
-            fontSize={{ md: "3xl", base: "23px" }}
-            fontWeight="bold"
+    <Box
+      h={{ base: "36px", md: "46px" }}
+      display="flex"
+      alignItems="center"
+      position="relative"
+      w="100%"
+      overflow="hidden"
+    >
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -16 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          style={{ width: "100%" }}
+        >
+          <Text
+            fontSize={{ base: "22px", sm: "26px", md: "32px" }}
+            fontWeight="700"
             fontFamily="'Space Grotesk', sans-serif"
-            bg="none"
-            className="gradient-text"
+            letterSpacing="-0.01em"
+            color="#6366F1"
+            background="linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #06B6D4 100%)"
+            backgroundClip="text"
+            sx={{
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+            lineHeight={1.2}
+            whiteSpace="nowrap"
           >
-            {message}
-          </Code>
-        ))}
-      </Box>
-      {/* <Code
-        fontSize={{ md: "3xl" }}
-        fontWeight="bold"
-        color={"#e4bb68"}
-        bg={"none"}
-        display={{ base: "none", md: "block" }}
-      >
-        <span style={{ color: "#33FFCC" }}>&quot;</span>)
-      </Code> */}
-    </Flex>
+            {messages[currentIndex]}
+          </Text>
+        </motion.div>
+      </AnimatePresence>
+    </Box>
   );
 };
 
