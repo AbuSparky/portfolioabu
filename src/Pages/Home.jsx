@@ -4,14 +4,14 @@ import { FaLinkedinIn } from "react-icons/fa";
 import right from "../assets/homeright.png";
 import Titlename from "../Components/TitleName/Titlename";
 import { motion } from "framer-motion";
-import resume from "../assets/Nihamathullah-- s.pdf";
+import resume from "../assets/Nihamathullah_Software_Developer.pdf";
 
 const Home = () => {
   const handleDownload = () => {
     const pdfUrl = resume;
     const link = document.createElement("a");
     link.href = pdfUrl;
-    link.download = "Nihamathullah--s.pdf"; // specify the filename
+    link.download = "Nihamathullah_Software_Developer.pdf"; // specify the filename
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -164,7 +164,7 @@ const Home = () => {
                 borderColor={"brand.buttonGreen"}
                 onClick={() => {
                   window.location.href =
-                    "https://www.linkedin.com/in/nihamathullah369/";
+                    "https://www.linkedin.com/in/nihamathullah/";
                 }}
                 cursor={"pointer"}
               >
@@ -185,7 +185,7 @@ const Home = () => {
         w={{ lg: "40%", md: "60%", base: "100%" }}
         justifyContent={"center"}
         alignItems={"center"}
-        pl={{base:10,lg:0}}
+        pl={{ base: 10, lg: 0 }}
       >
         <Image src={right} alt="right" />
       </Flex>

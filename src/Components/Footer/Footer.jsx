@@ -65,10 +65,10 @@ const Footer = () => {
 export default Footer;
 
 const footerIcon = [
-  { iconName: CgMail, link: "mailto:nihamath369@gmail.com" },
+  { iconName: CgMail, link: "mailto:nihamathullah.dev@gmail.com" },
   {
     iconName: FaLinkedinIn,
-    link: "https://www.linkedin.com/in/nihamathullah369/",
+    link: "https://www.linkedin.com/in/nihamathullah/",
   },
   { iconName: BsGithub, link: "https://github.com/AbuSparky" },
 ];

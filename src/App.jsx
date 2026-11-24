@@ -22,7 +22,7 @@ function App() {
       alignItems={"center"}
       justifyContent={"center"}
       className="font-link"
-      // pb={20}
+    // pb={20}
     >
       {/* <ThemeSwitcher /> */}
       {loading ? <Preloader /> : <MainLayout />}

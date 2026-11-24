@@ -13,6 +13,19 @@ import nodejs from "../assets/Skills/Nodejs.png";
 import react from "../assets/Skills/React.png";
 import tailwind from "../assets/Skills/tailwind.png";
 import vscode from "../assets/Skills/vsCode.png";
+import express from "../assets/Skills/Express.png";
+import python from "../assets/Skills/Python.png";
+import nextjs from "../assets/Skills/Nextjs.svg";
+import typescript from "../assets/Skills/TypeScript.svg";
+import graphql from "../assets/Skills/GraphQL.svg";
+import java from "../assets/Skills/Java.svg";
+import docker from "../assets/Skills/Docker.svg";
+import aws from "../assets/Skills/AWS.svg";
+import hostinger from "../assets/Skills/Hostinger.svg";
+import firebase from "../assets/Skills/Firebase.svg";
+import claude from "../assets/Skills/Claude.svg";
+import cursor from "../assets/Skills/Cursor.svg";
+import jquery from "../assets/Skills/jQuery.svg";
 import TypewriterText from "../Components/TypewriterText";
 
 
@@ -124,14 +137,17 @@ const Skills = () => {
                       transform: "rotateY(45deg) rotateZ(20deg)", // Apply rotation on Y and X axis
                     }}
                     transition={"transform 1.5s ease, box-shadow 1s ease"}
-                    // transition: transform 1.5s ease;
+                  // transition: transform 1.5s ease;
                   >
-                    <Image
-                      src={skill.icon}
-                      alt={skill.name}
-                      width={{ lg: 12, md: 10, base: 8 }}
-                      // height={{lg: 12, md: 10, base: 8 }}
-                    />
+                    {typeof skill.icon === "string" ? (
+                      <Image
+                        src={skill.icon}
+                        alt={skill.name}
+                        width={{ lg: 12, md: 10, base: 8 }}
+                      />
+                    ) : (
+                      <skill.icon size={36} />
+                    )}
                   </Flex>
                   <Text
                     color={"whiteAlpha.700"}
@@ -155,18 +171,29 @@ const Skills = () => {
 export default Skills;
 
 const skillData = [
-  { icon: react, name: "React" },
+  { icon: react, name: "React js" },
+  { icon: nextjs, name: "Next js" },
+  { icon: typescript, name: "Typescript" },
+  { icon: javascript, name: "Javascript" },
+  { icon: jquery, name: "JQuery" },
   { icon: html, name: "HTML" },
   { icon: css, name: "CSS" },
-  { icon: javascript, name: "Javascript" },
   { icon: tailwind, name: "Tailwind" },
   { icon: bootstrap, name: "Bootstrap" },
   { icon: materialUi, name: "Material UI" },
   { icon: nodejs, name: "Node.js" },
+  { icon: express, name: "Express.js" },
   { icon: mongo, name: "MongoDB" },
   { icon: mysql, name: "MySQL" },
+  { icon: graphql, name: "Graphql" },
   { icon: github, name: "Github" },
   { icon: vscode, name: "VSCode" },
-  
-
+  { icon: claude, name: "Claude" },
+  { icon: cursor, name: "Cursor" },
+  { icon: java, name: "Java" },
+  { icon: python, name: "Python" },
+  { icon: docker, name: "Docker" },
+  { icon: aws, name: "AWS" },
+  { icon: hostinger, name: "Hostinger" },
+  { icon: firebase, name: "Firebase" },
 ];

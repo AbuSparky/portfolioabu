@@ -1,7 +1,7 @@
 import {
   Flex,
   Text,
-  
+
   Code,
   Image,
 } from "@chakra-ui/react";
@@ -83,8 +83,8 @@ const About = () => {
             gap={2}
             fontSize={{ lg: 16, md: 14, base: 12 }}
             width={{ lg: "80%", md: "85%", base: "90%" }}
-            p={{md:6,base:4}}
-            borderRadius={{md:30,base:20}}
+            p={{ md: 6, base: 4 }}
+            borderRadius={{ md: 30, base: 20 }}
             bg={"#1D2023"}
             alignSelf={{ lg: "center", base: "center" }}
             zIndex={100}
@@ -98,15 +98,30 @@ const About = () => {
                 Hello!..
               </Code>
               <Code bg={"none"} color={"white"}>
-                Hi, I&apos;S Nihamath, a passionate software developer with over
-                a year of experience.I have
-                hands-on experience with{" "}
+                Hi, I&apos;m Nihamath, a passionate Full-Stack Developer with over a year
+                of experience building end-to-end web applications. I love turning ideas
+                into fast, scalable and user-friendly products, from pixel-perfect
+                interfaces to secure, high-performance APIs and well-structured databases.
+                I have hands-on experience with{" "}
                 <span style={{ color: "#33FFCC" }}>
-                  React.js, SQL, Node.js, Java{" "}
+                  React.js, Next.js, Node.js, Express.js, SQL, MongoDB, PostgreSQL
                 </span>
-                , and am familiar with{" "}
-                <span style={{ color: "#33FFCC" }}>backendless</span>{" "}
-                technology.
+                , and I&apos;m familiar with{" "}
+                <span style={{ color: "#33FFCC" }}>backend &amp; backendless</span>{" "}
+                technology. On the DevOps side, I deploy and manage applications using{" "}
+                <span style={{ color: "#33FFCC" }}>
+                  AWS, Hostinger, Docker and CI/CD pipelines
+                </span>{" "}
+                for smooth, automated releases. I write clean, maintainable code in{" "}
+                <span style={{ color: "#33FFCC" }}>
+                  JavaScript, Java, Python and SQL
+                </span>
+                , and I enjoy solving real-world problems, learning new tools and shipping
+                features that make a difference. I also use AI tools like{" "}
+                <span style={{ color: "#33FFCC" }}>
+                  Claude, ChatGPT, GitHub Copilot and Cursor
+                </span>{" "}
+                to speed up development, debug faster and ship better features.
               </Code>
               <Code bg={"none"} color={"white"}>
                 {" "}
