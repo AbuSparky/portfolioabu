@@ -20,14 +20,15 @@ import {
 import { FiCheck, FiCopy, FiExternalLink, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import { HiSparkles } from "react-icons/hi2";
 
-const ContactRow = ({ icon, label, value, href, actionLabel }) => {
+const ContactRow = ({ icon, label, value, href, actionLabel, isPhone = false, isEmail = false }) => {
   const { hasCopied, onCopy } = useClipboard(value);
 
   return (
     <Flex
-      align={{ base: "flex-start", sm: "center" }}
+      flexDir={{ base: "column", md: "row" }}
+      align={{ base: "stretch", md: "center" }}
       justify="space-between"
-      p={{ base: 3, sm: 3.5 }}
+      p={{ base: 3, sm: 3.5, md: 4 }}
       borderRadius="18px"
       bg="brand.sectionBg"
       border="1px solid"
@@ -38,51 +39,58 @@ const ContactRow = ({ icon, label, value, href, actionLabel }) => {
         transform: "translateY(-1px)",
         boxShadow: "0 8px 20px -6px rgba(99, 102, 241, 0.15)",
       }}
-      gap={3}
-      flexDir={{ base: "column", sm: "row" }}
+      gap={{ base: 2.5, md: 3 }}
       w="100%"
     >
-      <Flex align="center" gap={3} flex="1" minW={0}>
+      {/* Icon + Information Block */}
+      <Flex align="center" gap={{ base: 2.5, sm: 3 }} flex="1" minW={0}>
         <Flex
-          w={{ base: "38px", sm: "42px" }}
-          h={{ base: "38px", sm: "42px" }}
-          borderRadius="14px"
+          w={{ base: "38px", md: "42px" }}
+          h={{ base: "38px", md: "42px" }}
+          borderRadius="12px"
           align="center"
           justify="center"
           bg="linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(99, 102, 241, 0.18) 100%)"
           color="#6366F1"
           flexShrink={0}
         >
-          <Icon as={icon} boxSize={5} />
+          <Icon as={icon} boxSize={{ base: 4, md: 5 }} />
         </Flex>
-        <Box minW={0} flex="1">
+
+        <Box flex="1" minW={0}>
           <Text
-            fontSize="11px"
+            fontSize={{ base: "10px", sm: "11px" }}
             fontWeight="600"
             color="brand.textMuted"
             textTransform="uppercase"
             letterSpacing="0.05em"
+            lineHeight={1.2}
           >
             {label}
           </Text>
+
           <Text
-            fontSize={{ base: "13px", sm: "14px" }}
+            fontSize={{ base: "12.5px", sm: "13.5px", md: "14px" }}
             fontWeight="600"
             color="brand.textPrimary"
-            wordBreak="break-word"
-            lineHeight={1.4}
             mt={0.5}
+            lineHeight={1.4}
+            whiteSpace={isPhone ? "nowrap" : "normal"}
+            wordBreak={isEmail ? "break-all" : "normal"}
+            overflowWrap={isPhone ? "normal" : "break-word"}
           >
             {value}
           </Text>
         </Box>
       </Flex>
 
+      {/* Action Buttons: on mobile align to right below text, on desktop align alongside */}
       <Flex
         align="center"
+        justify={{ base: "flex-end", md: "flex-end" }}
         gap={1.5}
-        alignSelf={{ base: "flex-end", sm: "center" }}
         flexShrink={0}
+        pt={{ base: 0.5, md: 0 }}
       >
         {href && (
           <Button
@@ -90,12 +98,12 @@ const ContactRow = ({ icon, label, value, href, actionLabel }) => {
             href={href}
             isExternal={href.startsWith("http")}
             size="xs"
-            h="30px"
-            px={2.5}
+            h={{ base: "28px", md: "30px" }}
+            px={{ base: 3, md: 3.5 }}
             borderRadius="full"
             bg="rgba(99, 102, 241, 0.1)"
             color="#4F46E5"
-            fontSize="12px"
+            fontSize={{ base: "11.5px", md: "12px" }}
             fontWeight="600"
             _hover={{
               textDecoration: "none",
@@ -113,18 +121,18 @@ const ContactRow = ({ icon, label, value, href, actionLabel }) => {
         )}
 
         <Tooltip
-          label={hasCopied ? "Copied!" : "Copy to clipboard"}
+          label={hasCopied ? "Copied!" : "Copy"}
           placement="top"
           closeOnClick={false}
           hasArrow
         >
           <IconButton
             size="xs"
-            h="30px"
-            w="30px"
+            h={{ base: "28px", md: "30px" }}
+            w={{ base: "28px", md: "30px" }}
             borderRadius="full"
             aria-label={`Copy ${label}`}
-            icon={<Icon as={hasCopied ? FiCheck : FiCopy} boxSize={3.5} />}
+            icon={<Icon as={hasCopied ? FiCheck : FiCopy} boxSize={3} />}
             color={hasCopied ? "green.500" : "brand.textSecondary"}
             bg="brand.surface"
             border="1px solid"
@@ -148,44 +156,45 @@ const ContactModal = ({ isOpen, onClose }) => {
       onClose={onClose}
       isCentered
       motionPreset="slideInBottom"
-      size={{ base: "xs", sm: "md", md: "lg" }}
     >
       <ModalOverlay
         bg="rgba(15, 23, 42, 0.45)"
         backdropFilter="blur(8px)"
       />
       <ModalContent
-        borderRadius={{ base: "20px", sm: "24px" }}
+        borderRadius={{ base: "20px", md: "24px" }}
         bg="brand.cardBg"
         backdropFilter="blur(24px)"
         border="1px solid"
         borderColor="brand.cardBorder"
         boxShadow="0 25px 50px -12px rgba(99, 102, 241, 0.28)"
-        mx={{ base: 3, sm: 6 }}
+        mx={{ base: 3, sm: 4, md: "auto" }}
+        maxW={{ base: "calc(100vw - 24px)", sm: "460px", md: "520px" }}
         overflow="hidden"
-        p={{ base: 2, sm: 4 }}
+        p={{ base: 2, sm: 3, md: 4 }}
       >
         <ModalHeader pb={1} pr={10}>
-          <Flex align="center" gap={2} mb={1.5}>
+          <Flex align="center" gap={2} mb={1}>
             <Badge
               display="inline-flex"
               alignItems="center"
               gap={1.5}
-              px={3}
-              py={1}
+              px={2.5}
+              py={0.5}
               borderRadius="full"
               bg="rgba(99, 102, 241, 0.08)"
               border="1px solid rgba(99, 102, 241, 0.2)"
               color="#4F46E5"
-              fontSize="12px"
+              fontSize="11px"
               fontWeight="600"
               textTransform="none"
             >
               <Icon as={HiSparkles} color="#6366F1" /> Get in Touch
             </Badge>
           </Flex>
+
           <Text
-            fontSize={{ base: "19px", sm: "22px", md: "24px" }}
+            fontSize={{ base: "18px", sm: "20px", md: "22px" }}
             fontWeight="800"
             fontFamily="'Space Grotesk', sans-serif"
             color="brand.textPrimary"
@@ -193,23 +202,25 @@ const ContactModal = ({ isOpen, onClose }) => {
           >
             Contact Information
           </Text>
+
           <Text
-            fontSize={{ base: "12.5px", sm: "13.5px" }}
+            fontSize={{ base: "12px", sm: "13px" }}
             color="brand.textSecondary"
             fontWeight="400"
-            mt={1}
+            mt={0.5}
           >
             Reach out directly for freelance opportunities, full-time roles, or collaborations.
           </Text>
         </ModalHeader>
+
         <ModalCloseButton
-          top={4}
-          right={4}
+          top={3.5}
+          right={3.5}
           borderRadius="full"
           _hover={{ bg: "rgba(99, 102, 241, 0.1)" }}
         />
 
-        <ModalBody py={{ base: 3, sm: 4 }}>
+        <ModalBody py={{ base: 2.5, sm: 3, md: 4 }}>
           <Flex flexDir="column" gap={{ base: 2.5, sm: 3 }}>
             {/* Phone Number */}
             <ContactRow
@@ -218,6 +229,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               value="+91 8778556357"
               href="tel:+918778556357"
               actionLabel="Call"
+              isPhone={true}
             />
 
             {/* Email Address */}
@@ -227,6 +239,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               value="nihamathullah.dev@gmail.com"
               href="mailto:nihamathullah.dev@gmail.com"
               actionLabel="Email"
+              isEmail={true}
             />
 
             {/* Physical Address */}
