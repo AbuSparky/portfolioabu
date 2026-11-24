@@ -8,17 +8,22 @@ import {
   Link,
   Spinner,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { BsArrowDown, BsGithub } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
+import { FiMessageSquare } from "react-icons/fi";
 import { HiSparkles } from "react-icons/hi2";
 import Titlename from "../Components/TitleName/Titlename";
+import ContactModal from "../Components/ContactModal";
 import { motion } from "framer-motion";
 import resume from "../assets/Nihamathullah_Software_Developer.pdf";
 
 const HeroCanvas = lazy(() => import("../Components/three/HeroCanvas"));
 
 const Home = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = resume;
@@ -130,12 +135,12 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Flex gap={{ base: 3, sm: 4 }} align="center" pt={1} wrap="wrap">
+          <Flex gap={{ base: 2.5, sm: 3, md: 3.5 }} align="center" pt={1} wrap="wrap">
             {/* Download CV CTA */}
             <Button
               onClick={handleDownload}
               h={{ base: "44px", md: "52px" }}
-              px={{ base: 5, sm: 6, md: 8 }}
+              px={{ base: 4, sm: 5, md: 7 }}
               borderRadius="full"
               background="linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #22D3EE 100%)"
               color="white"
@@ -152,6 +157,33 @@ const Home = () => {
               rightIcon={<Icon as={BsArrowDown} boxSize={4} />}
             >
               Download CV
+            </Button>
+
+            {/* Contact Button CTA */}
+            <Button
+              onClick={onOpen}
+              h={{ base: "44px", md: "52px" }}
+              px={{ base: 4, sm: 5, md: 7 }}
+              borderRadius="full"
+              bg="brand.cardBg"
+              backdropFilter="blur(16px)"
+              border="1.5px solid"
+              borderColor="rgba(99, 102, 241, 0.3)"
+              color="brand.textPrimary"
+              fontWeight="600"
+              fontSize={{ base: "13px", sm: "14px", md: "15px" }}
+              boxShadow="0 4px 16px rgba(99, 102, 241, 0.1)"
+              transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+              _hover={{
+                transform: "translateY(-2px)",
+                borderColor: "#6366F1",
+                color: "#4F46E5",
+                boxShadow: "0 8px 24px rgba(99, 102, 241, 0.2)",
+              }}
+              _active={{ transform: "scale(0.98)" }}
+              leftIcon={<Icon as={FiMessageSquare} color="#6366F1" boxSize={4} />}
+            >
+              Contact
             </Button>
 
             {/* Social Links */}
@@ -236,6 +268,8 @@ const Home = () => {
           <HeroCanvas />
         </Suspense>
       </Flex>
+      {/* Contact Details Modal */}
+      <ContactModal isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 };
