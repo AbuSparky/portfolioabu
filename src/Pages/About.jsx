@@ -205,7 +205,7 @@ const About = () => {
                 boxShadow="0 10px 25px rgba(99, 102, 241, 0.15)"
               >
                 <Text fontSize="12px" fontWeight="700" color="#4338CA">
-                  ⚡ 1+ Year Experience
+                  ⚡ 2+ Year Experience
                 </Text>
               </Box>
             </Box>
