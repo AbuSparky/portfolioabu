@@ -3,51 +3,70 @@ import { Badge, Box, Flex, Icon, Image, Link, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { FiExternalLink } from "react-icons/fi";
 import Tilt from "react-parallax-tilt";
+import { useEffect, useState } from "react";
 
 const ProjectCard = ({ title, description, image, stack, nlink }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(
+        typeof window !== "undefined" &&
+          (window.innerWidth < 992 ||
+            "ontouchstart" in window ||
+            navigator.maxTouchPoints > 0)
+      );
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 35, scale: 0.96 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      viewport={{ once: true, amount: 0.15 }}
-      style={{ height: "100%" }}
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, amount: "some", margin: "0px 0px -20px 0px" }}
+      style={{ height: "100%", width: "100%" }}
     >
       <Tilt
         perspective={1000}
-        glareEnable={true}
+        glareEnable={!isMobile}
         glareMaxOpacity={0.08}
         glareColor="#6366F1"
         glareBorderRadius="24px"
-        scale={1.02}
+        scale={isMobile ? 1 : 1.02}
+        tiltEnable={!isMobile}
         transitionSpeed={1200}
-        style={{ height: "100%" }}
+        style={{ height: "100%", width: "100%" }}
       >
         <Flex
           flexDir="column"
           borderRadius="24px"
           overflow="hidden"
           h="100%"
-          bg="rgba(255, 255, 255, 0.85)"
+          bg="brand.cardBg"
           backdropFilter="blur(16px)"
-          border="1px solid rgba(226, 232, 240, 0.9)"
+          border="1px solid"
+          borderColor="brand.cardBorder"
           boxShadow="0 14px 34px -10px rgba(99, 102, 241, 0.08), 0 4px 6px rgba(0, 0, 0, 0.02)"
           transition="all 0.35s cubic-bezier(0.4, 0, 0.2, 1)"
           _hover={{
             borderColor: "rgba(99, 102, 241, 0.4)",
             boxShadow:
               "0 22px 45px -12px rgba(99, 102, 241, 0.2), 0 0 20px rgba(34, 211, 238, 0.15)",
-            transform: "translateY(-6px)",
+            transform: isMobile ? "none" : "translateY(-6px)",
           }}
-          p={5}
+          p={{ base: 4, sm: 5 }}
         >
           {/* Card Hero Image */}
           <Box
             w="100%"
-            h={{ base: "190px", md: "210px" }}
+            h={{ base: "180px", sm: "190px", md: "210px" }}
             borderRadius="18px"
             overflow="hidden"
-            bg="rgba(241, 245, 255, 0.8)"
+            bg="brand.sectionBg"
             position="relative"
             mb={4}
           >
@@ -57,6 +76,7 @@ const ProjectCard = ({ title, description, image, stack, nlink }) => {
               w="100%"
               h="100%"
               objectFit="cover"
+              loading="lazy"
               transition="transform 0.5s ease"
               _hover={{ transform: "scale(1.05)" }}
             />
@@ -66,8 +86,8 @@ const ProjectCard = ({ title, description, image, stack, nlink }) => {
           <Flex flexDir="column" flex="1" justifyContent="space-between">
             <Box>
               <Text
-                fontSize={{ base: "18px", md: "20px" }}
-                color="#0F172A"
+                fontSize={{ base: "17px", sm: "18px", md: "20px" }}
+                color="brand.textPrimary"
                 fontWeight="700"
                 fontFamily="'Space Grotesk', sans-serif"
                 lineHeight={1.3}
@@ -77,8 +97,8 @@ const ProjectCard = ({ title, description, image, stack, nlink }) => {
               </Text>
 
               <Text
-                color="#475569"
-                fontSize="13px"
+                color="brand.textSecondary"
+                fontSize={{ base: "12.5px", md: "13px" }}
                 lineHeight={1.65}
                 mb={4}
                 noOfLines={4}
@@ -119,7 +139,7 @@ const ProjectCard = ({ title, description, image, stack, nlink }) => {
                   fontSize="13px"
                   fontWeight="600"
                   color="#4338CA"
-                  px={3}
+                  px={3.5}
                   py={1.5}
                   borderRadius="full"
                   bg="rgba(99, 102, 241, 0.08)"

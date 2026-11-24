@@ -14,12 +14,12 @@ const Project = () => {
       mx="auto"
       flexDir="column"
       alignItems="center"
-      py={{ base: 14, md: 24 }}
-      px={{ base: 4, md: 8 }}
+      py={{ base: 12, md: 24 }}
+      px={{ base: 4, sm: 6, md: 8 }}
       position="relative"
     >
       {/* Title */}
-      <Flex flexDir="column" alignItems="center" mb={{ base: 10, md: 14 }}>
+      <Flex flexDir="column" alignItems="center" mb={{ base: 8, md: 14 }}>
         <TypewriterText text={text} />
         <Box
           w="60px"
@@ -30,9 +30,10 @@ const Project = () => {
         />
         <Text
           fontSize={{ base: "14px", md: "16px" }}
-          color="#64748B"
+          color="brand.textMuted"
           mt={3}
           textAlign="center"
+          px={3}
         >
           Selected web applications, platforms and systems I&apos;ve built
         </Text>

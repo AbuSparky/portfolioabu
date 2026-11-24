@@ -25,7 +25,7 @@ const About = () => {
           initial={{ opacity: 0, y: 25, x: -20 }}
           whileInView={{ opacity: 1, y: 0, x: 0 }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: "some" }}
         >
           <Badge
             display="inline-flex"
@@ -66,7 +66,7 @@ const About = () => {
           initial={{ opacity: 0, y: 35, scale: 0.97 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: "some" }}
         >
           <Flex
             flexDir="column"
@@ -163,7 +163,7 @@ const About = () => {
           initial={{ opacity: 0, scale: 0.94, x: 30 }}
           whileInView={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: "some" }}
         >
           <Tilt
             perspective={1000}

@@ -9,6 +9,7 @@ const ScrollReveal = ({
   width = "100%",
   className = "",
   style = {},
+  amount = "some",
 }) => {
   return (
     <motion.div
@@ -22,7 +23,7 @@ const ScrollReveal = ({
         y: 0,
         scale: 1,
       }}
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={{ once: true, amount: amount, margin: "0px 0px -40px 0px" }}
       transition={{
         duration: duration,
         delay: delay,

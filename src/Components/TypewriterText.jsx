@@ -9,7 +9,7 @@ const TypewriterText = ({ text }) => {
       fontWeight="800"
       fontFamily="'Space Grotesk', sans-serif"
       letterSpacing="-0.02em"
-      color="#0F172A"
+      color="brand.textPrimary"
       wrap="wrap"
       justify="center"
     >
@@ -20,15 +20,15 @@ const TypewriterText = ({ text }) => {
             opacity: 1,
             y: 0,
             transition: {
-              duration: 0.4,
-              delay: i * 0.03,
+              duration: 0.35,
+              delay: i * 0.025,
             },
           }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: "some" }}
           key={i}
           style={{
             display: "inline-block",
-            color: i === 0 ? "#6366F1" : "#0F172A",
+            color: i === 0 ? "#6366F1" : "inherit",
             textTransform: "uppercase",
           }}
         >

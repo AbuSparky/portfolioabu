@@ -152,7 +152,7 @@ const Skills = () => {
                 delay: (index % 6) * 0.07,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: true, amount: "some" }}
             >
               <Tilt
                 perspective={1000}
