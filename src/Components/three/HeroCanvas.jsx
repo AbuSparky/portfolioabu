@@ -16,7 +16,7 @@ class CanvasErrorBoundary extends Component {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error) {
     console.warn("WebGL is unavailable or context creation failed, rendering fallback.", error);
   }
 
@@ -29,37 +29,38 @@ class CanvasErrorBoundary extends Component {
 }
 
 const FallbackLoader = () => (
-  <Flex w="100%" h="100%" alignItems="center" justifyContent="center">
-    <Spinner size="xl" thickness="3px" speed="0.8s" color="#6366F1" />
+  <Flex w="100%" h={{ base: "240px", md: "460px" }} alignItems="center" justifyContent="center">
+    <Spinner size="lg" thickness="3px" speed="0.8s" color="#6366F1" />
   </Flex>
 );
 
-// High-end CSS 3D Animated Floating Glass Orb Fallback
+// High-end CSS 3D Animated Floating Glass Orb (Award-winning mobile & fallback animation)
 const ModernCSSGlassHero = () => (
   <Flex
     w="100%"
-    h={{ base: "320px", md: "460px", lg: "520px" }}
+    h={{ base: "240px", sm: "280px", md: "380px", lg: "520px" }}
     alignItems="center"
     justifyContent="center"
     position="relative"
+    overflow="hidden"
   >
     {/* Outer Atmospheric Glow */}
     <Box
       position="absolute"
-      w={{ base: "220px", sm: "280px", md: "340px" }}
-      h={{ base: "220px", sm: "280px", md: "340px" }}
+      w={{ base: "180px", sm: "240px", md: "320px", lg: "360px" }}
+      h={{ base: "180px", sm: "240px", md: "320px", lg: "360px" }}
       borderRadius="full"
-      background="radial-gradient(circle, rgba(124, 58, 237, 0.3) 0%, rgba(99, 102, 241, 0.2) 40%, rgba(34, 211, 238, 0.1) 70%, transparent 90%)"
-      filter="blur(40px)"
+      background="radial-gradient(circle, rgba(124, 58, 237, 0.3) 0%, rgba(99, 102, 241, 0.22) 40%, rgba(34, 211, 238, 0.12) 70%, transparent 90%)"
+      filter="blur(35px)"
       pointerEvents="none"
     />
 
     {/* Floating Glass Orb with Framer Motion */}
     <motion.div
       animate={{
-        y: [-12, 12, -12],
+        y: [-8, 8, -8],
         rotate: [0, 180, 360],
-        scale: [1, 1.04, 1],
+        scale: [1, 1.03, 1],
       }}
       transition={{
         duration: 9,
@@ -72,13 +73,13 @@ const ModernCSSGlassHero = () => (
       }}
     >
       <Box
-        w={{ base: "190px", sm: "240px", md: "290px" }}
-        h={{ base: "190px", sm: "240px", md: "290px" }}
+        w={{ base: "150px", sm: "190px", md: "250px", lg: "280px" }}
+        h={{ base: "150px", sm: "190px", md: "250px", lg: "280px" }}
         borderRadius="full"
-        background="linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(226, 232, 240, 0.45) 50%, rgba(99, 102, 241, 0.35) 100%)"
+        background="linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(226, 232, 240, 0.5) 50%, rgba(99, 102, 241, 0.35) 100%)"
         backdropFilter="blur(24px)"
         border="1.5px solid rgba(255, 255, 255, 0.9)"
-        boxShadow="0 25px 50px -12px rgba(99, 102, 241, 0.35), inset 0 0 30px rgba(255, 255, 255, 0.6), inset 0 -15px 30px rgba(124, 58, 237, 0.25)"
+        boxShadow="0 20px 45px -10px rgba(99, 102, 241, 0.35), inset 0 0 25px rgba(255, 255, 255, 0.6), inset 0 -12px 25px rgba(124, 58, 237, 0.25)"
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -91,20 +92,20 @@ const ModernCSSGlassHero = () => (
           h="75%"
           borderRadius="full"
           background="linear-gradient(135deg, rgba(34, 211, 238, 0.45) 0%, rgba(124, 58, 237, 0.45) 100%)"
-          filter="blur(18px)"
+          filter="blur(16px)"
           transform="rotate(45deg)"
         />
 
         {/* Center Geometric Core */}
         <Box
           position="absolute"
-          w="45%"
-          h="45%"
-          borderRadius="18px"
+          w="44%"
+          h="44%"
+          borderRadius="16px"
           background="linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #22D3EE 100%)"
           boxShadow="0 0 25px rgba(99, 102, 241, 0.6)"
           transform="rotate(25deg)"
-          opacity={0.85}
+          opacity={0.88}
         />
       </Box>
     </motion.div>
@@ -121,8 +122,8 @@ const ModernCSSGlassHero = () => (
       }}
       style={{
         position: "absolute",
-        width: "360px",
-        height: "360px",
+        width: "280px",
+        height: "280px",
         pointerEvents: "none",
       }}
     >
@@ -130,21 +131,21 @@ const ModernCSSGlassHero = () => (
         position="absolute"
         top="10%"
         left="15%"
-        w="10px"
-        h="10px"
+        w="9px"
+        h="9px"
         borderRadius="full"
         bg="#6366F1"
-        boxShadow="0 0 14px #6366F1"
+        boxShadow="0 0 12px #6366F1"
       />
       <Box
         position="absolute"
         bottom="12%"
         right="18%"
-        w="14px"
-        h="14px"
+        w="12px"
+        h="12px"
         borderRadius="full"
         bg="#22D3EE"
-        boxShadow="0 0 16px #22D3EE"
+        boxShadow="0 0 14px #22D3EE"
       />
     </motion.div>
   </Flex>
@@ -169,12 +170,18 @@ const HeroCanvas = () => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    // Check prefers-reduced-motion
+    // Check if on touch or screen width is mobile/tablet (< 992px)
+    const isMobileOrTablet =
+      window.innerWidth < 992 ||
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0;
+
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const hasWebGL = !prefersReducedMotion && checkWebGL();
+    // Use full WebGL R3F canvas strictly on desktop screens with hardware acceleration
+    const hasWebGL = !isMobileOrTablet && !prefersReducedMotion && checkWebGL();
     setCanRenderWebGL(hasWebGL);
     setChecked(true);
   }, []);
@@ -183,6 +190,7 @@ const HeroCanvas = () => {
     return <FallbackLoader />;
   }
 
+  // On mobile & tablet, render the gorgeous CSS 3D Glass Hero that renders perfectly
   if (!canRenderWebGL) {
     return <ModernCSSGlassHero />;
   }
@@ -191,7 +199,7 @@ const HeroCanvas = () => {
     <CanvasErrorBoundary fallback={<ModernCSSGlassHero />}>
       <Box
         w="100%"
-        h={{ base: "320px", md: "460px", lg: "540px" }}
+        h={{ base: "260px", md: "460px", lg: "540px" }}
         position="relative"
         cursor="grab"
         _active={{ cursor: "grabbing" }}

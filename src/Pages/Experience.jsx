@@ -47,7 +47,7 @@ const Experience = () => {
           position="absolute"
           top="20px"
           bottom="40px"
-          left={{ base: "20px", md: "50%" }}
+          left={{ base: "14px", sm: "18px", md: "50%" }}
           transform={{ base: "none", md: "translateX(-50%)" }}
           w="2px"
           background="linear-gradient(180deg, #7C3AED 0%, #6366F1 50%, #22D3EE 100%)"
@@ -60,17 +60,17 @@ const Experience = () => {
             <Flex
               key={i}
               w="100%"
-              mb={{ base: 10, md: 14 }}
+              mb={{ base: 8, md: 14 }}
               position="relative"
               flexDir={{ base: "column", md: isEven ? "row" : "row-reverse" }}
               alignItems={{ base: "flex-start", md: "center" }}
-              pl={{ base: "50px", md: 0 }}
+              pl={{ base: "34px", sm: "42px", md: 0 }}
             >
               {/* Timeline Center Glowing Node */}
               <Box
                 position="absolute"
-                left={{ base: "10px", md: "50%" }}
-                top={{ base: "2px", md: "50%" }}
+                left={{ base: "5px", sm: "8px", md: "50%" }}
+                top={{ base: "4px", md: "50%" }}
                 transform={{
                   base: "none",
                   md: "translate(-50%, -50%)",
@@ -78,8 +78,8 @@ const Experience = () => {
                 zIndex={3}
               >
                 <Flex
-                  w="22px"
-                  h="22px"
+                  w="20px"
+                  h="20px"
                   borderRadius="full"
                   bg="white"
                   border="3px solid #6366F1"
@@ -97,11 +97,11 @@ const Experience = () => {
                   initial={{
                     opacity: 0,
                     y: 25,
-                    x: isEven ? -25 : 25,
+                    x: 0,
                   }}
                   whileInView={{ opacity: 1, y: 0, x: 0 }}
-                  transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  viewport={{ once: true, amount: 0.15 }}
                 >
                   <Tilt
                     perspective={1000}
@@ -109,16 +109,17 @@ const Experience = () => {
                     glareMaxOpacity={0.08}
                     glareColor="#6366F1"
                     glareBorderRadius="24px"
-                    scale={1.02}
+                    scale={1.01}
                     transitionSpeed={1200}
                   >
                     <Flex
                       flexDir="column"
-                      p={{ base: 5, md: 7 }}
-                      borderRadius="24px"
-                      bg="rgba(255, 255, 255, 0.85)"
+                      p={{ base: 4, sm: 5, md: 7 }}
+                      borderRadius={{ base: "20px", md: "24px" }}
+                      bg="brand.cardBg"
                       backdropFilter="blur(16px)"
-                      border="1px solid rgba(226, 232, 240, 0.9)"
+                      border="1px solid"
+                      borderColor="brand.cardBorder"
                       boxShadow="0 14px 34px -10px rgba(99, 102, 241, 0.1), 0 4px 6px rgba(0, 0, 0, 0.02)"
                       transition="all 0.3s ease"
                       _hover={{

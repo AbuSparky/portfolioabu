@@ -83,14 +83,17 @@ const Skills = () => {
       {/* Category Filter Pills */}
       <Flex
         wrap="wrap"
-        gap={2.5}
+        gap={{ base: 2, sm: 2.5 }}
         justify="center"
-        mb={10}
-        p={1.5}
-        borderRadius="full"
-        bg="rgba(255, 255, 255, 0.7)"
-        border="1px solid rgba(226, 232, 240, 0.85)"
+        mb={{ base: 8, md: 10 }}
+        p={{ base: 2, sm: 2, md: 1.5 }}
+        borderRadius={{ base: "18px", md: "full" }}
+        bg="brand.glassBg"
+        backdropFilter="blur(16px)"
+        border="1px solid"
+        borderColor="brand.glassBorder"
         boxShadow="0 4px 20px rgba(99, 102, 241, 0.05)"
+        maxW="100%"
       >
         {categories.map((cat) => {
           const isSelected = selectedCategory === cat;
@@ -99,10 +102,10 @@ const Skills = () => {
               key={cat}
               as="button"
               onClick={() => setSelectedCategory(cat)}
-              px={{ base: 3.5, md: 4 }}
-              py={1.5}
+              px={{ base: 3, sm: 3.5, md: 4 }}
+              py={{ base: 1, sm: 1.2, md: 1.5 }}
               borderRadius="full"
-              fontSize={{ base: "12px", md: "13px" }}
+              fontSize={{ base: "11px", sm: "12px", md: "13px" }}
               fontWeight="600"
               cursor="pointer"
               textTransform="none"
@@ -112,7 +115,7 @@ const Skills = () => {
                   ? "linear-gradient(135deg, #7C3AED, #6366F1)"
                   : "transparent"
               }
-              color={isSelected ? "white" : "#475569"}
+              color={isSelected ? "white" : "brand.textSecondary"}
               boxShadow={
                 isSelected ? "0 4px 14px rgba(99, 102, 241, 0.35)" : "none"
               }
@@ -134,7 +137,7 @@ const Skills = () => {
           md: "repeat(4, 1fr)",
           lg: "repeat(6, 1fr)",
         }}
-        gap={{ base: 4, sm: 5, md: 6 }}
+        gap={{ base: 3, sm: 4, md: 5, lg: 6 }}
         w="100%"
         maxW="1180px"
       >
@@ -166,12 +169,13 @@ const Skills = () => {
                   flexDir="column"
                   alignItems="center"
                   justifyContent="center"
-                  p={{ base: 4, md: 5 }}
-                  h={{ base: "130px", md: "145px" }}
-                  borderRadius="20px"
-                  bg="rgba(255, 255, 255, 0.85)"
+                  p={{ base: 3, sm: 4, md: 5 }}
+                  h={{ base: "116px", sm: "130px", md: "145px" }}
+                  borderRadius={{ base: "16px", md: "20px" }}
+                  bg="brand.cardBg"
                   backdropFilter="blur(14px)"
-                  border="1px solid rgba(226, 232, 240, 0.9)"
+                  border="1px solid"
+                  borderColor="brand.cardBorder"
                   boxShadow="0 10px 25px -8px rgba(99, 102, 241, 0.08)"
                   transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                   _hover={{
@@ -183,39 +187,40 @@ const Skills = () => {
                   cursor="default"
                 >
                   <Flex
-                    w={{ base: "52px", md: "60px" }}
-                    h={{ base: "52px", md: "60px" }}
-                    borderRadius="16px"
+                    w={{ base: "44px", md: "56px" }}
+                    h={{ base: "44px", md: "56px" }}
+                    borderRadius={{ base: "12px", md: "16px" }}
                     bg="rgba(248, 250, 255, 0.95)"
                     border="1px solid rgba(226, 232, 240, 0.8)"
                     alignItems="center"
                     justifyContent="center"
-                    mb={3}
+                    mb={{ base: 2, md: 3 }}
                     boxShadow="inset 0 2px 4px rgba(0, 0, 0, 0.02)"
                   >
                     {typeof skill.icon === "string" ? (
                       <Image
                         src={skill.icon}
                         alt={skill.name}
-                        w={{ base: "30px", md: "34px" }}
-                        h={{ base: "30px", md: "34px" }}
+                        w={{ base: "24px", md: "32px" }}
+                        h={{ base: "24px", md: "32px" }}
                         objectFit="contain"
                       />
                     ) : (
-                      <skill.icon size={32} />
+                      <skill.icon size={28} />
                     )}
                   </Flex>
                   <Text
-                    fontSize={{ base: "13px", md: "14px" }}
+                    fontSize={{ base: "12px", md: "14px" }}
                     fontWeight="600"
-                    color="#0F172A"
+                    color="brand.textPrimary"
                     textAlign="center"
+                    lineHeight={1.2}
                   >
                     {skill.name}
                   </Text>
                   <Text
-                    fontSize="11px"
-                    color="#64748B"
+                    fontSize={{ base: "10px", md: "11px" }}
+                    color="brand.textMuted"
                     fontWeight="500"
                     mt={0.5}
                   >

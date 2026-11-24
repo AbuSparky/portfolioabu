@@ -38,17 +38,17 @@ const Home = () => {
       alignItems="center"
       justifyContent="space-between"
       flexDir={{ base: "column-reverse", lg: "row" }}
-      pt={{ base: 28, md: 32, lg: 20 }}
-      pb={{ base: 12, lg: 16 }}
-      px={{ base: 5, md: 8, lg: 12 }}
+      pt={{ base: 20, sm: 24, md: 28, lg: 20 }}
+      pb={{ base: 8, md: 12, lg: 16 }}
+      px={{ base: 4, sm: 6, md: 8, lg: 12 }}
       position="relative"
-      gap={{ base: 8, lg: 4 }}
+      gap={{ base: 2, sm: 4, md: 6, lg: 4 }}
     >
       {/* Left Content */}
       <Flex
         w={{ lg: "54%", base: "100%" }}
         flexDir="column"
-        gap={{ base: 4, md: 5 }}
+        gap={{ base: 3.5, sm: 4, md: 5 }}
         zIndex={2}
       >
         {/* Availability Badge */}
@@ -60,14 +60,14 @@ const Home = () => {
           <Badge
             display="inline-flex"
             alignItems="center"
-            gap={2}
-            px={3.5}
+            gap={1.5}
+            px={{ base: 3, md: 3.5 }}
             py={1.5}
             borderRadius="full"
             bg="rgba(99, 102, 241, 0.08)"
             border="1px solid rgba(99, 102, 241, 0.2)"
             color="#4F46E5"
-            fontSize={{ base: "12px", md: "13px" }}
+            fontSize={{ base: "11px", sm: "12px", md: "13px" }}
             fontWeight="600"
             textTransform="none"
           >
@@ -83,11 +83,11 @@ const Home = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <Text
-            fontSize={{ base: "34px", sm: "44px", md: "52px", lg: "58px" }}
+            fontSize={{ base: "30px", sm: "38px", md: "50px", lg: "58px" }}
             fontWeight="800"
             fontFamily="'Space Grotesk', sans-serif"
             lineHeight={{ base: 1.15, md: 1.1 }}
-            color="#0F172A"
+            color="brand.textPrimary"
             letterSpacing="-0.03em"
           >
             Hello, I&apos;m{" "}
@@ -113,8 +113,8 @@ const Home = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <Text
-            fontSize={{ base: "15px", md: "17px" }}
-            color="#475569"
+            fontSize={{ base: "14px", sm: "15px", md: "17px" }}
+            color="brand.textSecondary"
             lineHeight={1.65}
             maxW="560px"
           >
@@ -130,17 +130,17 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Flex gap={{ base: 3, sm: 4 }} align="center" pt={2} wrap="wrap">
+          <Flex gap={{ base: 3, sm: 4 }} align="center" pt={1} wrap="wrap">
             {/* Download CV CTA */}
             <Button
               onClick={handleDownload}
-              h={{ base: "48px", md: "52px" }}
-              px={{ base: 6, md: 8 }}
+              h={{ base: "44px", md: "52px" }}
+              px={{ base: 5, sm: 6, md: 8 }}
               borderRadius="full"
               background="linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #22D3EE 100%)"
               color="white"
               fontWeight="600"
-              fontSize={{ base: "14px", md: "15px" }}
+              fontSize={{ base: "13px", sm: "14px", md: "15px" }}
               boxShadow="0 10px 25px -5px rgba(99, 102, 241, 0.45)"
               transition="all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
               _hover={{
@@ -155,20 +155,22 @@ const Home = () => {
             </Button>
 
             {/* Social Links */}
-            <Flex gap={3}>
+            <Flex gap={2.5}>
               <Link
                 href="https://github.com/AbuSparky"
                 isExternal
                 _hover={{ textDecoration: "none" }}
+                aria-label="GitHub Profile"
               >
                 <Flex
-                  w={{ base: "48px", md: "52px" }}
-                  h={{ base: "48px", md: "52px" }}
+                  w={{ base: "44px", md: "52px" }}
+                  h={{ base: "44px", md: "52px" }}
                   borderRadius="full"
                   align="center"
                   justify="center"
-                  bg="white"
-                  border="1px solid rgba(226, 232, 240, 0.9)"
+                  bg="brand.surface"
+                  border="1px solid"
+                  borderColor="brand.headerBorder"
                   boxShadow="0 4px 14px rgba(0, 0, 0, 0.04)"
                   transition="all 0.25s ease"
                   _hover={{
@@ -177,7 +179,7 @@ const Home = () => {
                     transform: "translateY(-2px)",
                     boxShadow: "0 8px 20px rgba(99, 102, 241, 0.2)",
                   }}
-                  color="#475569"
+                  color="brand.textSecondary"
                 >
                   <Icon as={BsGithub} boxSize={5} />
                 </Flex>
@@ -187,15 +189,17 @@ const Home = () => {
                 href="https://www.linkedin.com/in/nihamathullah/"
                 isExternal
                 _hover={{ textDecoration: "none" }}
+                aria-label="LinkedIn Profile"
               >
                 <Flex
-                  w={{ base: "48px", md: "52px" }}
-                  h={{ base: "48px", md: "52px" }}
+                  w={{ base: "44px", md: "52px" }}
+                  h={{ base: "44px", md: "52px" }}
                   borderRadius="full"
                   align="center"
                   justify="center"
-                  bg="white"
-                  border="1px solid rgba(226, 232, 240, 0.9)"
+                  bg="brand.surface"
+                  border="1px solid"
+                  borderColor="brand.headerBorder"
                   boxShadow="0 4px 14px rgba(0, 0, 0, 0.04)"
                   transition="all 0.25s ease"
                   _hover={{
@@ -204,7 +208,7 @@ const Home = () => {
                     transform: "translateY(-2px)",
                     boxShadow: "0 8px 20px rgba(10, 102, 194, 0.2)",
                   }}
-                  color="#475569"
+                  color="brand.textSecondary"
                 >
                   <Icon as={FaLinkedinIn} boxSize={5} />
                 </Flex>
@@ -214,7 +218,7 @@ const Home = () => {
         </motion.div>
       </Flex>
 
-      {/* Right 3D Scene */}
+      {/* Right 3D Visual */}
       <Flex
         w={{ lg: "46%", base: "100%" }}
         justifyContent="center"
@@ -224,7 +228,7 @@ const Home = () => {
       >
         <Suspense
           fallback={
-            <Flex h="350px" align="center" justify="center">
+            <Flex h="240px" align="center" justify="center">
               <Spinner color="#6366F1" size="lg" />
             </Flex>
           }

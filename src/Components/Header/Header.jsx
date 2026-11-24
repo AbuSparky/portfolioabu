@@ -54,17 +54,17 @@ const Header = () => {
   return (
     <Box
       position="fixed"
-      top={{ base: 2.5, md: 5 }}
+      top={{ base: 2, sm: 3, md: 5 }}
       left="50%"
       transform="translateX(-50%)"
       zIndex={1200}
-      w={{ base: "96%", sm: "92%", md: "auto" }}
-      maxW="780px"
+      w={{ base: "calc(100% - 16px)", sm: "92%", md: "auto" }}
+      maxW="720px"
     >
       <Flex
         alignItems="center"
         justifyContent="space-between"
-        px={{ base: 2.5, sm: 3.5, md: 5 }}
+        px={{ base: 2, sm: 3, md: 4 }}
         py={{ base: 1.5, md: 2 }}
         borderRadius="full"
         bg="brand.headerBg"
@@ -77,7 +77,6 @@ const Header = () => {
             : "0 8px 25px -8px rgba(99, 102, 241, 0.1)"
         }
         transition="all 0.3s ease"
-        gap={{ base: 1, sm: 2, md: 3 }}
       >
         {/* Brand Monogram */}
         <Link
@@ -86,12 +85,12 @@ const Header = () => {
           _hover={{ textDecoration: "none" }}
           display="flex"
           alignItems="center"
-          gap={2}
+          gap={1.5}
           pr={{ base: 1, sm: 2 }}
         >
           <Flex
-            w="32px"
-            h="32px"
+            w={{ base: "30px", md: "34px" }}
+            h={{ base: "30px", md: "34px" }}
             borderRadius="full"
             bg="linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #22D3EE 100%)"
             alignItems="center"
@@ -100,22 +99,24 @@ const Header = () => {
             fontWeight="bold"
             fontSize="13px"
             boxShadow="0 4px 12px rgba(99, 102, 241, 0.35)"
+            flexShrink={0}
           >
             N
           </Flex>
           <Text
-            display={{ base: "none", md: "block" }}
+            display={{ base: "none", lg: "block" }}
             fontWeight="700"
             fontSize="14px"
             fontFamily="'Space Grotesk', sans-serif"
             color="brand.textPrimary"
+            whiteSpace="nowrap"
           >
             Nihamath
           </Text>
         </Link>
 
         {/* Navigation Tabs */}
-        <Flex alignItems="center" gap={{ base: 0.5, md: 1 }}>
+        <Flex alignItems="center" gap={{ base: 0.5, sm: 1, md: 1 }}>
           {navTabs.map((tab) => {
             const isActive = activeSection === tab.id;
             return (
@@ -124,23 +125,24 @@ const Header = () => {
                 label={tab.name}
                 placement="bottom"
                 hasArrow
-                display={{ base: "none", md: "none" }}
+                display={{ base: "block", md: "none" }}
               >
                 <Link
                   href={`#${tab.id}`}
                   onClick={(e) => scrollTo(e, tab.id)}
                   _hover={{ textDecoration: "none" }}
                   position="relative"
-                  px={{ base: 2, sm: 2.5, md: 3.5 }}
+                  px={{ base: 2, sm: 2.5, md: 3 }}
                   py={{ base: 1.5, md: 1.5 }}
                   borderRadius="full"
                   display="flex"
                   alignItems="center"
                   gap={1.5}
-                  fontSize={{ base: "11px", sm: "12px", md: "13px" }}
+                  fontSize={{ base: "12px", md: "13px" }}
                   fontWeight={isActive ? "600" : "500"}
                   color={isActive ? "#4F46E5" : "brand.textSecondary"}
                   transition="color 0.2s ease"
+                  aria-label={tab.name}
                 >
                   {isActive && (
                     <motion.div
@@ -164,13 +166,14 @@ const Header = () => {
                       }}
                     />
                   )}
-                  <Box position="relative" zIndex={1}>
-                    <Icon as={tab.icon} boxSize={{ base: 3.5, md: 3.5 }} />
+                  <Box position="relative" zIndex={1} display="flex" alignItems="center">
+                    <Icon as={tab.icon} boxSize={{ base: 4, sm: 4, md: 3.5 }} />
                   </Box>
                   <Text
                     position="relative"
                     zIndex={1}
-                    display={{ base: "none", sm: "block" }}
+                    display={{ base: "none", md: "block" }}
+                    whiteSpace="nowrap"
                   >
                     {tab.name}
                   </Text>
@@ -181,7 +184,7 @@ const Header = () => {
         </Flex>
 
         {/* ThemeSwitcher Toggle */}
-        <Box pl={{ base: 0.5, sm: 1, md: 2 }}>
+        <Box pl={{ base: 1, sm: 1.5, md: 2 }} flexShrink={0}>
           <ThemeSwitcher />
         </Box>
       </Flex>
